@@ -1,10 +1,11 @@
-import React from 'react';
+import { useContext } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import './Header.css';
+import AppContext from '../AppContext/AppContext';
 import { Link } from 'react-router-dom';
 
 function Header() {
-    let state = { account: 'caugiay01', role: 'user', area: 'Cầu Giấy' };
+    const { state, dispatch } = useContext(AppContext);
     return (
         <header>
             <Link to="/" className="logo">
@@ -35,7 +36,7 @@ function Header() {
                                 />
                             </Link>
                         ) : (
-                            <Link to="/login">Đăng nhập</Link>
+                            <Link to="/auth/login">Đăng nhập</Link>
                         )}
                     </li>
                 </ul>
