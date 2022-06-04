@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import AppContext from './components/AppContext/AppContext';
-import Login from 'first'
+import Account from './features/Accounts/Account';
 import AppReducer from './reducers/AppReducer';
 import { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -26,8 +26,8 @@ function App() {
                                 element={<Form />}
                             />
                         </Route> */}
-                        <Route path="/auth/login" element={<Login />} />
-                        <Route path="*" element={<div>Page not found</div>} />
+                        <Route path="/users" element={<Account />} />
+                        {/* <Route path="*" element={<div>Page not found</div>} /> */}
                     </Routes>
                 </div>
             </AppContext.Provider>

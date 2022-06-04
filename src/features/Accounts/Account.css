@@ -1,0 +1,19 @@
+form{
+  font-size: 1.5em;
+  margin-top: 4em;
+  margin-left: 400px;
+  width: 50%;
+  border: 3px solid #04AA6D;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+form button {
+background-color: #04AA6D;
+color: white;
+padding: 8px 14px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
