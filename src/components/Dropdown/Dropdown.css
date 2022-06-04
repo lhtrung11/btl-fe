@@ -1,7 +1,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  right: 0;
+  right: -25%;
   top: 100%;
   min-width: 150px;
   /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
@@ -13,11 +13,11 @@
   font-size: var(--fs-tiny);
   padding: 1em;
   cursor: default;
-  border-right: 4px solid var(--color-primary);
 } 
 
 .dropdown-content li.btn {
   cursor: pointer;
+  border-radius: 0%;
 }
 
 

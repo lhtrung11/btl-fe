@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './components/Header/Header';
+import Header from './components/header/Header';
 import AppContext from './components/AppContext/AppContext';
-import Login from 'first'
+import Login from './features/Auth/login/Login'
 import AppReducer from './reducers/AppReducer';
 import { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
