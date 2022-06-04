@@ -1,21 +1,42 @@
-import React from "react";
+import React from 'react';
+import Dropdown from '../Dropdown/Dropdown';
+import './Header.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
+    let state = { account: 'caugiay01', role: 'user', area: 'Cầu Giấy' };
     return (
         <header>
-            <a href="/" class="logo">
+            <Link to="/" className="logo">
                 Quản lý <span>Thực phẩm</span>
-            </a>
+            </Link>
             <nav>
                 <ul>
                     <li>
-                        <a href="/">Trang chủ</a>
+                        <Link to="/">Trang chủ</Link>
                     </li>
+                    {state.account && (
+                        <li>
+                            <Link to="/management">Quản lý</Link>
+                        </li>
+                    )}
                     <li>
-                        <a href="/register">Đăng ký</a>
-                    </li>
-                    <li>
-                        <a href="/login">Đăng nhập</a>
+                        {state.account ? (
+                            <Link to={'/home'} className="dropdown">
+                                Tài khoản
+                                <Dropdown
+                                    items={Object.keys(state).map(
+                                        (key) =>
+                                            `${key.toUpperCase()}: ${
+                                                state[key]
+                                            }`
+                                    )}
+                                    buttons={['Đăng xuất']}
+                                />
+                            </Link>
+                        ) : (
+                            <Link to="/login">Đăng nhập</Link>
+                        )}
                     </li>
                 </ul>
             </nav>
