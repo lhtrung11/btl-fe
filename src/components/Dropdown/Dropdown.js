@@ -3,7 +3,7 @@ import './Dropdown.css';
 import '../Buttons/Buttons.css';
 
 export default function Dropdown({ items, buttons }) {
-    console.log(items, buttons);
+    // console.log(items, buttons);
     return (
         <ul className="dropdown-content">
             {items.map((item, index) => (
