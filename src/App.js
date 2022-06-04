@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import AppContext from './components/AppContext/AppContext';
 import Account from './features/Accounts/Account';
+import AccountList from './features/Accounts/AccountList/AccountList';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
 import { useReducer } from 'react';
@@ -30,7 +31,7 @@ function App() {
                             />
                         </Route> */}
                         <Route path="/auth/login" element={<Login />} />
-                        <Route path="/users" element={<Account />} />
+                        <Route path="/users" element={<AccountList />} />
                         {/* <Route path="*" element={<div>Page not found</div>} /> */}
                     </Routes>
                 </div>
