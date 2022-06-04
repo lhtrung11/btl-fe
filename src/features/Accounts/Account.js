@@ -4,15 +4,15 @@ import './Account.css';
 export default function AccountList() {
     return (
         <form>
-            <label for="username">Tên tài khoản:</label>
+            <label htmlFor="username">Tên tài khoản:</label>
             <br />
             <input type="text" name="username" />
             <br />
-            <label for="password">Mật khẩu:</label>
+            <label htmlFor="password">Mật khẩu:</label>
             <br />
             <input type="text" name="password" />
             <br />
-            <label for="role">Quản lý</label>
+            <label htmlFor="role">Quản lý</label>
             <br />
             <select>
                 <option value={'Cầu Giấy'}>Cầu Giấy</option>
@@ -21,7 +21,7 @@ export default function AccountList() {
                 <option value={'Tây Hồ'}>Tây Hồ</option>
             </select>
             <br />
-            <label for="isActive">Trạng thái:</label>
+            <label htmlFor="isActive">Trạng thái:</label>
             <br />
             <input type="checkbox" name="isActive" />
             <br />

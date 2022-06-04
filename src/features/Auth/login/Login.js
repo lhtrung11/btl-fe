@@ -32,7 +32,6 @@ const Login = () => {
                 username: user,
                 password: pwd,
             });
-            console.log(response);
             const accessToken = response?.data.data?.token;
             const role = response?.data.data?.role;
             const area = response?.data.data?.area;
