@@ -3,18 +3,13 @@ import './Account.css';
 
 export default function AccountList() {
     return (
-        <form>
-            <label for="username">Tên tài khoản:</label>
+        <form className='form'>
+            <label for="username">Tên chuyên viên:</label>
             <br />
             <input type="text" name="username" />
             <br />
-            <label for="password">Mật khẩu:</label>
-            <br />
-            <input type="text" name="password" />
-            <br />
-            <label for="role">Quản lý</label>
-            <br />
-            <select>
+            <label for="area">Khu vực:</label>
+            <select name='area'>
                 <option value={'Cầu Giấy'}>Cầu Giấy</option>
                 <option value={'Thanh Xuân'}>Thanh Xuân</option>
                 <option value={'Hoàn Kiếm'}>Hoàn Kiếm</option>
@@ -22,10 +17,12 @@ export default function AccountList() {
             </select>
             <br />
             <label for="isActive">Trạng thái:</label>
+            <select name='isActive'>
+                <option value={true}>Đang hoạt động</option>
+                <option value={false}>Không còn hoạt động</option>
+            </select>
             <br />
-            <input type="checkbox" name="isActive" />
-            <br />
-            <button type="submit">Đăng ký</button>
+            <button type="submit">Cập nhật</button>
         </form>
     );
 }
