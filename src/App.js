@@ -57,7 +57,7 @@ function App() {
                         <Route path="/auth/login" element={<Login />} />
                         <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
-                        {/* <Route path="*" element={<div>Page not found</div>} /> */}
+                        <Route path="*" element={<div>Page not found</div>} />
                     </Routes>
                 </div>
             </AppContext.Provider>
