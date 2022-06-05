@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import AppContext from './components/AppContext/AppContext';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
+import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
+import FacilityList from './features/Facilities/FacilityList/FacilityList';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
 import { useReducer, useCallback, useEffect } from 'react';
@@ -65,6 +67,10 @@ function App() {
                         } />
                         <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
+                        
+                        <Route path="/facilities" element={<FacilityForm />} />
+                        {/* <Route path="/facilities" element={<FacilityList />} /> */}
+
                         <Route path="*" element={<div>Page not found</div>} />
                     </Routes>
                 </div>
