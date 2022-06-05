@@ -11,7 +11,6 @@ const AccountList = () => {
     const { state, dispatch } = useContext(AppContext);
     const { accounts } = state;
     const [users, setUsers] = useState({});
-    const navigate = useNavigate();
 
     const getAllAccounts = useCallback(async () => {
         try {
@@ -44,9 +43,19 @@ const AccountList = () => {
         getAllAccounts();
     }, [getAllAccounts]);
 
-    const handleUpdate = (e) => {
-        navigate('/accounts', { state: state });
-    };
+    const handleDelete = async (e) => {
+        const token = localStorage.getItem('token');
+        const userID = e.target.value;
+        const option = {
+                method: "delete",
+                url: `${ACCOUNT_URL}/${userID}`,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+        }
+        await axios(option);
+        dispatch( { type: "DELETE_ONE_ACCOUNT", payload: userID });
+    }
 
     useEffect(() => {
         getAllAccounts();
@@ -82,7 +91,13 @@ const AccountList = () => {
                                         : 'Chưa được đăng ký khu vực'}
                                 </td>
                                 <td>
-                                    <button type="submit">Xóa</button>
+                                    <button 
+                                        type="submit"
+                                        value={account._id}
+                                        onClick={(e)=>handleDelete(e)}
+                                    >
+                                        Xóa
+                                    </button>
                                 </td>
                                 <td>
                                     <button
