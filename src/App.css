@@ -41,3 +41,28 @@ select {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+.middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.middle .intro {
+  margin-left: 8em;
+  margin-top: 10em;
+}
+
+.middle .intro h1 {
+  color: #04AA6D;
+  font-weight: normal;
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+}
