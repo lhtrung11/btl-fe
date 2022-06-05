@@ -15,9 +15,13 @@ const AccountList = () => {
 
     const getAllAccounts = useCallback(async () => {
         try {
+            const token = localStorage.getItem('token');
             const option = {
                 method: 'get',
                 url: ACCOUNT_URL,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             };
             const response = await axios(option);
             const accounts = response.data.data.users;
