@@ -33,7 +33,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            console.log(error);
+            
         }
     }, [dispatch]);
     useEffect(() => {

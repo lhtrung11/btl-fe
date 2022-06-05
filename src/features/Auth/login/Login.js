@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import axios from '../../../api/axios';
 import AppContext from '../../../components/AppContext/AppContext';
 import './Login.css';
+
 const LOGIN_URL = '/auth/login';
 
 const Login = () => {
