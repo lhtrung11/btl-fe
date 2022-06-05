@@ -1,6 +1,7 @@
 import { React, useContext } from 'react';
 import './Dropdown.css';
 import AppContext from '../AppContext/AppContext';
+import { Navigate  } from 'react-router';
 import '../Buttons/Buttons.css';
 
 export default function Dropdown({ items, buttons }) {

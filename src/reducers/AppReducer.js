@@ -6,6 +6,8 @@ export default function reducer(state, action) {
             return { ...action.payload };
         case "LOG_OUT":
             return { ...action.payload };
+        case "GET_ALL_ACCOUNTS":
+            return { ...state, accounts: action.payload};
         default:
             return state;
     }

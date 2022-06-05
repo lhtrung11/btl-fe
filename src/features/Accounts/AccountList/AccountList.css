@@ -40,3 +40,7 @@
 .list tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.list a {
+    color: black;
+}
