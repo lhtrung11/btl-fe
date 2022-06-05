@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
@@ -65,6 +66,8 @@ function App() {
                                 <Login /> 
                             </div>
                         } />
+
+                        <Route path="/" element={<Home />}></Route>
                         <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
                         

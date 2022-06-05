@@ -23,7 +23,7 @@ function Header() {
                     )}
                     <li>
                         {state.account ? (
-                            <Link to={'/home'} className="dropdown">
+                            <Link to={'/'} className="dropdown">
                                 Tài khoản
                                 <Dropdown
                                     items={Object.keys(state).map(
