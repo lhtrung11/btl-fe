@@ -54,7 +54,15 @@ function App() {
                                 element={<Form />}
                             />
                         </Route> */}
-                        <Route path="/auth/login" element={<Login />} />
+                        <Route path="/auth/login" element={
+                            <div className='middle'>
+                                <p className='intro'>
+                                    <h1>Trang đăng nhập dành cho nhà quản lý</h1>
+                                    Hãy đăng nhập để có thể truy cập thông tin bạn cần
+                                </p> 
+                                <Login /> 
+                            </div>
+                        } />
                         <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
                         <Route path="*" element={<div>Page not found</div>} />

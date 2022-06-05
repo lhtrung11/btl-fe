@@ -43,10 +43,6 @@ const AccountList = () => {
         } catch (error) {}
     }, [dispatch]);
 
-    useEffect(() => {
-        getAllAccounts();
-    }, [getAllAccounts]);
-
     const handleDelete = async (e) => {
         const token = localStorage.getItem('token');
         const userID = e.target.value;
