@@ -21,7 +21,6 @@ const AccountList = () => {
             }
             const response = await axios(option);
             const accounts = response.data.data.users;
-            console.log(accounts);
             dispatch({ type: "GET_ALL_ACCOUNTS", payload: accounts });
             setUsers(accounts.filter(account => account.role === "user").sort((account1, account2) => {
                 if (account2.isActive === false){
@@ -67,7 +66,7 @@ const AccountList = () => {
                             </td>
                             <td>
                                 <button value={account.username} type="submit">
-                                    <a href='/accounts'>Chỉnh sửa</a>
+                                    <a href={`users/${account._id}`}>Chỉnh sửa</a>
                                 </button>
                             </td>
                         </tr>
