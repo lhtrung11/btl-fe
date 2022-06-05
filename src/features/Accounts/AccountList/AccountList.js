@@ -9,6 +9,10 @@ const ACCOUNT_URL = '/admin/accounts';
 const AccountList = () => {
     // KIỂM TRA TÀI KHOẢN CÓ PHẢI ADMIN KHÔNG -> KHÔNG THÌ NAVIGATE LẠI HOME
     const { state, dispatch } = useContext(AppContext);
+
+    // QUERY
+    const [query, setQuery] = useState({ role: '', isActive: '', area: '' });
+
     const { accounts } = state;
     const [users, setUsers] = useState({});
 
@@ -47,20 +51,20 @@ const AccountList = () => {
         const token = localStorage.getItem('token');
         const userID = e.target.value;
         const option = {
-                method: "delete",
-                url: `${ACCOUNT_URL}/${userID}`,
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-        }
+            method: 'delete',
+            url: `${ACCOUNT_URL}/${userID}`,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
         await axios(option);
-        dispatch( { type: "DELETE_ONE_ACCOUNT", payload: userID });
-    }
+        dispatch({ type: 'DELETE_ONE_ACCOUNT', payload: userID });
+    };
 
     useEffect(() => {
         getAllAccounts();
     }, [getAllAccounts, accounts]);
-    
+
     return (
         <>
             <h1 className="listName">quản lý người dùng</h1>
@@ -91,10 +95,10 @@ const AccountList = () => {
                                         : 'Chưa được đăng ký khu vực'}
                                 </td>
                                 <td>
-                                    <button 
+                                    <button
                                         type="submit"
                                         value={account._id}
-                                        onClick={(e)=>handleDelete(e)}
+                                        onClick={(e) => handleDelete(e)}
                                     >
                                         Xóa
                                     </button>
