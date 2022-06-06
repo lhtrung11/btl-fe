@@ -1,4 +1,4 @@
-.area-form{
+.area-form {
     font-size: 1.5em;
     margin-top: 4em;
     margin-left: 400px;
@@ -6,6 +6,10 @@
     border: 3px solid #04AA6D;
     border-radius: 25px;
     padding: 10px;
+}
+
+.area-form h1 {
+  font-size: 120%;
 }
 
 .area-form button {
@@ -17,8 +21,7 @@
   cursor: pointer;
   width: 100%;
 }
-input[type=text],
-input[type=password] {
+.area-form input[type=text], .area-form input[type=number] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
