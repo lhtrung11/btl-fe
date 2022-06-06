@@ -5,8 +5,11 @@ import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
+import Register from './features/Accounts/NewAccount/Register';
 import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
+import AreaList from './features/Area/AreaList/AreaList';
+import AreaForm from './features/Area/AreaForm/AreaForm';
 import InspectionForm from './features/Inspections/InspectionForm/InspectionForm';
 import InspectionList from './features/Inspections/InspectionList/InspectionList';
 import Login from './features/Auth/login/Login';
@@ -70,8 +73,9 @@ function App() {
                             }
                         />
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
 
                         <Route path="/facilities" element={<FacilityList />} />
                         <Route
@@ -82,6 +86,9 @@ function App() {
                             path="/facilities/:facilityID"
                             element={<FacilityForm value={false} />}
                         />
+
+                        <Route path="/area" element={<AreaForm />} />
+                        <Route path="/arealist" element={<AreaList />} />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
                         <Route path="/inspections/register" element={<InspectionForm />} />

@@ -65,7 +65,9 @@ const Login = () => {
     };
 
     return state.account ? (
-        <Navigate to="/" state={{ from: location }} replace />
+        <>
+            <Navigate to="/" state={{ from: location }} replace />
+        </>
     ) : (
         <section>
             <form className="log-in" onSubmit={handleAuth}>

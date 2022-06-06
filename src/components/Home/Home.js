@@ -16,7 +16,7 @@ const Home = () => {
                             <div className="dropbtn">chuyên viên</div>
                             <div className="content">
                                 <Link to='/users'>Danh sách chuyên viên</Link>
-                                <Link to='/#'>Đăng ký tài khoản cho chuyên viên mới</Link>
+                                <Link to='/users/register'>Đăng ký tài khoản cho chuyên viên mới</Link>
                             </div>
                         </li>
                     )}
@@ -33,8 +33,8 @@ const Home = () => {
                         <li className="dropdown">
                             <div className="dropbtn">khu vực quản lý</div>
                             <div className="content">
-                                <Link to="#">Danh sách các khu vực</Link>
-                                <Link to='#'>Đăng ký khu vực mới</Link>
+                                <Link to="arealist">Danh sách các khu vực</Link>
+                                <Link to='area'>Đăng ký khu vực mới</Link>
                             </div>
                         </li>
                     )}
