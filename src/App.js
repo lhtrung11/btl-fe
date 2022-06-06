@@ -39,6 +39,7 @@ function App() {
             
         }
     }, [dispatch]);
+
     useEffect(() => {
         checkCurrentUser();
     }, [checkCurrentUser]);

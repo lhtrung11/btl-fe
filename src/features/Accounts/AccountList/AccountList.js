@@ -14,7 +14,7 @@ const AccountList = () => {
     const [query, setQuery] = useState({ role: '', isActive: '', area: '' });
 
     const { accounts } = state;
-    const [users, setUsers] = useState({});
+    const [users, setUsers] = useState([]);
 
     const getAllAccounts = useCallback(async () => {
         try {

@@ -28,27 +28,32 @@
     font-size: 110%;
 }
 
-.homeAction .dropdown-content {
+.homeAction .content {
     display: none;
-    border-top: 2px solid white;
     background-color: #04AA6D;
-    margin-top: 1rem;
+    margin-top: 3rem;
     min-width: 160px;
     z-index: 1;
 }
 
-.dropdown-content a, .dropdown-content div {
+.content a, .content div {
     padding: 10px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover, .dropdown-content div:hover {
+.content a:hover, .content div:hover {
     cursor: pointer;
     border-radius: 25px;
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropbtn {
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+
+.dropdown:hover .content {
     display: block;
+    margin-top: 10px;
 }
