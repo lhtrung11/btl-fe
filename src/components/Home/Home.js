@@ -17,7 +17,6 @@ const Home = () => {
                             <div className="content">
                                 <Link to='/users'>Danh sách chuyên viên</Link>
                                 <Link to='/#'>Đăng ký tài khoản cho chuyên viên mới</Link>
-                                <Link to='/#'>Chỉnh sửa tài khoản chuyên viên</Link>
                             </div>
                         </li>
                     )}
@@ -27,7 +26,6 @@ const Home = () => {
                         <div className="content">
                             <Link to="/facilities">Danh sách các cơ sở kinh doanh</Link>
                             <Link to='/facilities/register'>Đăng ký cơ sở kinh doanh mới</Link>
-                            <Link to='/facilities/update'>Chỉnh sửa cơ sở kinh doanh</Link>
                         </div>
                     </li>
 
@@ -37,7 +35,6 @@ const Home = () => {
                             <div className="content">
                                 <Link to="#">Danh sách các khu vực</Link>
                                 <Link to='#'>Đăng ký khu vực mới</Link>
-                                <Link to='#'>Chỉnh sửa khu vực</Link>
                             </div>
                         </li>
                     )}
@@ -47,7 +44,6 @@ const Home = () => {
                         <div className="content">
                             <Link to="#">Xem lịch thanh tra</Link>
                             <Link to="#">Lên lịch thanh tra</Link>
-                            <Link to="#">Chỉnh sửa lịch thanh tra</Link>
                         </div>
                     </li>
                 </ul>

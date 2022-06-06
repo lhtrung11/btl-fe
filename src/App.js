@@ -2,10 +2,13 @@ import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
+import NotFound from './components/NotFound/NotFound';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
 import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
+import InspectionForm from './features/Inspections/InspectionForm/InspectionForm';
+import InspectionList from './features/Inspections/InspectionList/InspectionList';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
 import { useReducer, useCallback, useEffect } from 'react';
@@ -36,7 +39,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            
+            localStorage.removeItem("token");
         }
     }, [dispatch]);
 
@@ -74,9 +77,13 @@ function App() {
                         
                         {/* <Route path="/facilities" element={<FacilityList />} /> */}
                         <Route path="/facilities/register" element={<FacilityForm value={true}/>} />
-                        <Route path="/facilities/update" element={<FacilityForm value={false}/>} />
+                        <Route path="/facilities/:facilityID" element={<FacilityForm value={false}/>} />
 
-                        <Route path="*" element={<div>Page not found</div>} />
+                        {/* <Route path="/inspections" element={<InspectionList />} />
+                        <Route path="/inspections/register" element={<InspectionForm />} />
+                        <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
             </AppContext.Provider>
