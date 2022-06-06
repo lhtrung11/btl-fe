@@ -22,7 +22,8 @@ tr:nth-child(even) {
 }
 .header {
     color: #04AA6D;
-    margin-left: 7.2em;
-    width: 100%;
+    margin: auto;
+    display: block;
+    width: 50%;
     font-size: 50px;
 }

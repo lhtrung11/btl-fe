@@ -50,20 +50,13 @@ function App() {
         checkCurrentUser();
     }, [checkCurrentUser]);
 
+    console.log(state);
     return (
         <Router>
             <AppContext.Provider value={{ state, dispatch }}>
                 <div>
                     <Header />
                     <Routes>
-                        {/* <Route element={<ProtectedRoute user={state.user} />}>
-                            <Route path="/students" element={<List />} />
-                            <Route path="/form" element={<Form />} />
-                            <Route
-                                path="/students/:studentId"
-                                element={<Form />}
-                            />
-                        </Route> */}
                         <Route
                             path="/auth/login"
                             element={
@@ -79,13 +72,12 @@ function App() {
                                 </div>
                             }
                         />
-
                         <Route path="/" element={<Home />}></Route>
                         <Route path="/users" element={<AccountList />} />
                         <Route path="/users/register" element={<Register />} />
                         <Route path="/users/:userId" element={<Account />} />
 
-                        {/* <Route path="/facilities" element={<FacilityList />} /> */}
+                        <Route path="/facilities" element={<FacilityList />} />
                         <Route
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
