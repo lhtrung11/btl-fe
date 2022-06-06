@@ -17,11 +17,6 @@ function Header() {
                     <li>
                         <Link to="/">Trang chủ</Link>
                     </li>
-                    {state.account && (
-                        <li>
-                            <Link to="/management">Quản lý</Link>
-                        </li>
-                    )}
                     <li>
                         {state.account ? (
                             <div className="dropdown">
