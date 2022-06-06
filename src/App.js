@@ -7,6 +7,8 @@ import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
 import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
+import AreaList from './features/Area/AreaList/AreaList';
+import AreaForm from './features/Area/AreaForm/AreaForm';
 import InspectionForm from './features/Inspections/InspectionForm/InspectionForm';
 import InspectionList from './features/Inspections/InspectionList/InspectionList';
 import Login from './features/Auth/login/Login';
@@ -78,6 +80,9 @@ function App() {
                         {/* <Route path="/facilities" element={<FacilityList />} /> */}
                         <Route path="/facilities/register" element={<FacilityForm value={true}/>} />
                         <Route path="/facilities/:facilityID" element={<FacilityForm value={false}/>} />
+
+                        <Route path="/area" element={<AreaForm />} />
+                        <Route path="/arealist" element={<AreaList />} />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
                         <Route path="/inspections/register" element={<InspectionForm />} />
