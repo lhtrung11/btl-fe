@@ -72,8 +72,9 @@ function App() {
                         <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
                         
-                        <Route path="/facilities" element={<FacilityForm />} />
                         {/* <Route path="/facilities" element={<FacilityList />} /> */}
+                        <Route path="/facilities/register" element={<FacilityForm value={true}/>} />
+                        <Route path="/facilities/update" element={<FacilityForm value={false}/>} />
 
                         <Route path="*" element={<div>Page not found</div>} />
                     </Routes>

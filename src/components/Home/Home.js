@@ -25,9 +25,9 @@ const Home = () => {
                     <li className="dropdown">
                         <div className="dropbtn">cơ sở kinh doanh</div>
                         <div className="content">
-                            <Link to="#">Danh sách các cơ sở kinh doanh</Link>
-                            <Link to='#'>Đăng ký cơ sở kinh doanh mới</Link>
-                            <Link to='#'>Chỉnh sửa cơ sở kinh doanh</Link>
+                            <Link to="/facilities">Danh sách các cơ sở kinh doanh</Link>
+                            <Link to='/facilities/register'>Đăng ký cơ sở kinh doanh mới</Link>
+                            <Link to='/facilities/update'>Chỉnh sửa cơ sở kinh doanh</Link>
                         </div>
                     </li>
 

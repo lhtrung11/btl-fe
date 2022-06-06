@@ -4,8 +4,9 @@ import './FacilityForm.css';
 
 const FACILITY_URL = '/facilities/';
 
-const FacilityForm = () => {
-    const [mode, setMode] = useState(true); //true -> đăng ký, false -> chỉnh sửa
+const FacilityForm = ({value}) => {
+    //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
+    const [mode, setMode] = useState(value); //true -> đăng ký, false -> chỉnh sửa
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
     // const [address, setAddress] = useState("");
@@ -96,7 +97,7 @@ const FacilityForm = () => {
                 <option value={'629c687277b1cff0da27ee82'}>
                     Quận Bắc Từ Liêm
                 </option>
-                <option value={'629c680877b1cff0da27ee78'}>
+                <option value={'-'}>
                     Quận Hai Bà Trưng
                 </option>
                 <option value={'629cda29c6bb221d0fb7b8dd'}>
