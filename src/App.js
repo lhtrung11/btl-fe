@@ -40,7 +40,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            localStorage.removeItem("token");
+            localStorage.removeItem('token');
         }
     }, [dispatch]);
 
@@ -62,15 +62,21 @@ function App() {
                                 element={<Form />}
                             />
                         </Route> */}
-                        <Route path="/auth/login" element={
-                            <div className='middle'>
-                                <p className='intro'>
-                                    <h1>Trang đăng nhập dành cho nhà quản lý</h1>
-                                    Hãy đăng nhập để có thể truy cập thông tin bạn cần
-                                </p> 
-                                <Login /> 
-                            </div>
-                        } />
+                        <Route
+                            path="/auth/login"
+                            element={
+                                <div className="middle">
+                                    <p className="intro">
+                                        <h1>
+                                            Trang đăng nhập dành cho nhà quản lý
+                                        </h1>
+                                        Hãy đăng nhập để có thể truy cập thông
+                                        tin bạn cần
+                                    </p>
+                                    <Login />
+                                </div>
+                            }
+                        />
 
                         <Route path="/" element={<Home />}></Route>
                         <Route path="/users" element={<AccountList />} />
@@ -78,8 +84,14 @@ function App() {
                         <Route path="/users/:userId" element={<Account />} />
 
                         {/* <Route path="/facilities" element={<FacilityList />} /> */}
-                        <Route path="/facilities/register" element={<FacilityForm value={true}/>} />
-                        <Route path="/facilities/:facilityID" element={<FacilityForm value={false}/>} />
+                        <Route
+                            path="/facilities/register"
+                            element={<FacilityForm value={true} />}
+                        />
+                        <Route
+                            path="/facilities/:facilityID"
+                            element={<FacilityForm value={false} />}
+                        />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
                         <Route path="/inspections/register" element={<InspectionForm />} />
