@@ -5,6 +5,7 @@ import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
+import Register from './features/Accounts/NewAccount/Register';
 import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
 import InspectionForm from './features/Inspections/InspectionForm/InspectionForm';
@@ -72,9 +73,10 @@ function App() {
                         } />
 
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="/users/:userId" element={<Account />} />
                         <Route path="/users" element={<AccountList />} />
-                        
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
+
                         {/* <Route path="/facilities" element={<FacilityList />} /> */}
                         <Route path="/facilities/register" element={<FacilityForm value={true}/>} />
                         <Route path="/facilities/:facilityID" element={<FacilityForm value={false}/>} />

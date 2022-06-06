@@ -16,7 +16,7 @@ const Home = () => {
                             <div className="dropbtn">chuyên viên</div>
                             <div className="content">
                                 <Link to='/users'>Danh sách chuyên viên</Link>
-                                <Link to='/#'>Đăng ký tài khoản cho chuyên viên mới</Link>
+                                <Link to='/users/register'>Đăng ký tài khoản cho chuyên viên mới</Link>
                             </div>
                         </li>
                     )}
