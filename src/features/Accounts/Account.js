@@ -2,8 +2,6 @@ import React from 'react';
 import './Account.css';
 
 export default function Account() {
-    
-    
     return (
         <form className="form">
             <label for="username">Tên chuyên viên:</label>
