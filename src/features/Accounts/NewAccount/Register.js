@@ -30,9 +30,9 @@ const Register = () => {
 
     const [msg, setMsg] = useState('');
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+    // useEffect(() => {
+    //     userRef.current.focus();
+    // }, [])
 
     useEffect(() => {
         const result = USER_REGEX.test(user);
@@ -46,9 +46,6 @@ const Register = () => {
         setValidMatch(match);
     }, [pwd, matchPwd])
 
-    useEffect(()=> {
-        setMsg('');
-    }, [user, pwd, matchPwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -61,10 +58,10 @@ const Register = () => {
                     REGISTER_URL,
                     { username: user, password: pwd }
                 )
-                setMsg("Đăng ký thành công!");
                 setUser('');
                 setPwd('');
                 setMatchPwd('');
+                setMsg("Đăng ký thành công");
             } 
             catch (err) {
                 if (!err?.response){
@@ -90,7 +87,9 @@ const Register = () => {
     }
 
     return (
-        state.account ? (
+        state.role != 'admin' ? (
+            <Navigate to="/" state={{ from: location }} replace />
+        ) : (
             <section className="middle">
                 <section className="intro">
                     <h1>Tạo tài khoản cho chuyên viên của bạn</h1>
@@ -172,8 +171,6 @@ const Register = () => {
 
                 </form>
             </section>
-        ) : (
-            <Navigate to="/" state={{ from: location }} replace />
         )
     )
 }
