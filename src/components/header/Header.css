@@ -49,21 +49,21 @@ header nav > li {
     width: auto;
 }
 
-header nav > ul a {
+header nav > ul a, header nav > ul div {
     color: var(--color-primary);
     padding: 0 0.5em;
 }
 
-a { 
+header a, header div { 
     height: 100%;
     display: flex;
     align-items: center;
 }
 
-a.dropdown {
+.dropdown {
     position: relative;
 }
 
-a.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
     display: block;
 }

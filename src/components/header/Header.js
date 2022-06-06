@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Header() {
     const { state, dispatch } = useContext(AppContext);
+    
     return (
         <header>
             <Link to="/" className="logo">
@@ -23,18 +24,23 @@ function Header() {
                     )}
                     <li>
                         {state.account ? (
-                            <Link to={'/home'} className="dropdown">
+                            <div className="dropdown">
                                 Tài khoản
                                 <Dropdown
-                                    items={Object.keys(state).map(
-                                        (key) =>
-                                            `${key.toUpperCase()}: ${
-                                                state[key]
-                                            }`
-                                    )}
+                                    items={Object.keys(state)
+                                        .filter (
+                                            (key) => key === 'account' || key === 'area' || key === 'role'
+                                        )
+                                        .map (
+                                            (key) =>
+                                                `${key.toUpperCase()}: ${
+                                                    state[key]
+                                                }`
+                                        )
+                                    }
                                     buttons={['Đăng xuất']}
                                 />
-                            </Link>
+                            </div>
                         ) : (
                             <Link to="/auth/login">Đăng nhập</Link>
                         )}

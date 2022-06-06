@@ -1,0 +1,59 @@
+.homeAction .actionList {
+    margin-top: 9em;
+    margin-left: 400px;
+    width: 50%;
+    border: 3px solid #04AA6D;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.homeAction .actionList li {
+    border: 1px solid #04AA6D;
+    border-radius: 25px;
+    padding: 10px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background-color: #04AA6D;
+    cursor: pointer;
+}
+
+.homeAction .dropbtn {
+    text-transform: uppercase;
+}
+
+.homeAction .actionList li a,
+.homeAction .actionList li div {
+    color: white;
+    font-size: 110%;
+}
+
+.homeAction .content {
+    display: none;
+    background-color: #04AA6D;
+    margin-top: 3rem;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.content a, .content div {
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.content a:hover, .content div:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropbtn {
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+
+.dropdown:hover .content {
+    display: block;
+    margin-top: 10px;
+}

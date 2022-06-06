@@ -41,3 +41,67 @@ select {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+.middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.middle .intro {
+  margin-left: 8em;
+  margin-top: 10em;
+}
+
+.middle .intro h1 {
+  color: #04AA6D;
+  font-weight: normal;
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.btn {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #04AA6D;
+  background-color: white;
+}
+
+.backBtn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 0.5rem;
+  background-color: #04AA6D;
+  border: none;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  color: #04AA6D;
+  background-color: white;
+}
+
+.backBtn text {
+  padding-left: 5px;
+}
