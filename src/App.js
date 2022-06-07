@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/header/Header';
+import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
