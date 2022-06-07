@@ -91,12 +91,19 @@ function App() {
                             element={<FacilityForm value={true} />}
                         />
 
-                        {/* <Route path="/inspections" element={<InspectionList />} />
-                            <Route path="/inspections/register" element={<InspectionForm />} />
-                            <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
-                        {/* </Route> */}
+                        <Route
+                            path="/inspections"
+                            element={<InspectionList />}
+                        />
+                        <Route
+                            path="/inspections/register"
+                            element={<InspectionForm />}
+                        />
+                        <Route
+                            path="/inspections/:inspectionID"
+                            element={<InspectionForm />}
+                        />
 
-                        {/* <Route element={<LoggedRoute account={state.account} role={state.role} />}> */}
                         <Route path="/users" element={<AccountList />} />
                         <Route path="/users/register" element={<Register />} />
                         <Route path="/users/:userId" element={<Account />} />
