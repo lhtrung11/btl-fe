@@ -1,29 +1,31 @@
-.table {
-  margin-top: 2em;
+.areaTable {
+  margin-top: 1em;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-th {
+
+.areaTable th {
   border: 1px solid #101010c4;
   text-align: center;
   padding: 8px;
   background-color: #04AA6D;
   color: white;
 }
-td {
+
+.areaTable td {
   border: 1px solid #101010c4;
   text-align: center;
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.areaTable tr:nth-child(even) {
   background-color: #dddddd;
 }
-.header {
+
+.areaListHeader {
+    padding-top: 5px;
     color: #04AA6D;
-    margin: auto;
-    display: block;
-    width: 50%;
-    font-size: 50px;
+    text-align: center;
+    font-size: 150%;
 }
