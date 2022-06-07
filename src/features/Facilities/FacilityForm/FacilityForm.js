@@ -5,39 +5,44 @@ import './FacilityForm.css';
 
 const FACILITY_URL = '/facilities/';
 
-const FacilityForm = ({value}) => {
+const FacilityForm = ({ value }) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
-    const [mode, setMode] = useState(value); 
+    const [mode, setMode] = useState(value);
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
     const [license, setLicense] = useState({});
     const { facilityId } = useParams();
     const token = localStorage.getItem('token');
-    
+
     const getFacility = useCallback(() => {
         if (mode === false) {
-            axios.get(`/facilities/${facilityId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((response) => {
-                setFacility({...facility, 
-                    name: response.data.data.facility.name,
-                    area: response.data.data.facility.area,
-                    address: response.data.data.facility.address,
-                    business: response.data.data.facility.business,
-                    contact: response.data.data.facility.contact,
+            axios
+                .get(`/facilities/${facilityId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((response) => {
+                    setFacility({
+                        ...facility,
+                        name: response.data.data.facility.name,
+                        area: response.data.data.facility.area,
+                        address: response.data.data.facility.address,
+                        business: response.data.data.facility.business,
+                        contact: response.data.data.facility.contact,
+                    });
+                    setLicense({
+                        ...license,
+                        business: response.data.data.facility.business,
+                    });
+                })
+                .catch((error) => {
+                    setMsg('Không tìm thấy cơ sở phù hợp, vui lòng quay lại');
                 });
-                setLicense({...license, business: response.data.data.facility.business,});
-            })
-            .catch((error) => {
-                setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
-            })
         }
-    }, [ ])
+    }, []);
 
-    useEffect(() => getFacility(), [ getFacility ]);
+    useEffect(() => getFacility(), [getFacility]);
 
     const createFacility = async (e) => {
         e.preventDefault();
@@ -60,17 +65,17 @@ const FacilityForm = ({value}) => {
     const updateFacility = async (e) => {
         e.preventDefault();
         try {
-            console.log()
+            console.log(facility, license);
             const token = localStorage.getItem('token');
             const option = {
                 method: 'put',
                 url: `/facilities/${facilityId}`,
-                data: { facility, license: license},
+                data: { ...facility, license: license },
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            const response = await axios(option);   
+            const response = await axios(option);
             setMsg('Chỉnh sửa thông tin cơ sở thành công!');
         } catch (err) {
             setMsg('Chỉnh sửa thông tin cơ sở không thành công');
@@ -79,8 +84,8 @@ const FacilityForm = ({value}) => {
 
     return (
         <>
-            <Link to='/facilities' className="backBtn">
-                <i className="fa fa-caret-square-o-left" /> 
+            <Link to="/facilities" className="backBtn">
+                <i className="fa fa-caret-square-o-left" />
                 <text>Danh sách cơ sở</text>
             </Link>
 
@@ -89,14 +94,16 @@ const FacilityForm = ({value}) => {
                 onSubmit={
                     mode
                         ? (e) => {
-                            createFacility(e);
-                        }
+                              createFacility(e);
+                          }
                         : (e) => {
-                            updateFacility(e);
-                        }
+                              updateFacility(e);
+                          }
                 }
             >
-                <h1>{mode ? 'Đăng ký cơ sở mới' : 'Chỉnh sửa thông tin cơ sở'}</h1>
+                <h1>
+                    {mode ? 'Đăng ký cơ sở mới' : 'Chỉnh sửa thông tin cơ sở'}
+                </h1>
 
                 <label htmlFor="name">Tên cơ sở:</label>
                 <input
@@ -109,7 +116,7 @@ const FacilityForm = ({value}) => {
                             setFacility({ ...facility, name: e.target.value });
                         }
                     }}
-                    disabled={ mode ? false : true}
+                    disabled={mode ? false : true}
                     required
                 />
 
@@ -118,11 +125,11 @@ const FacilityForm = ({value}) => {
                     name="area"
                     value={facility?.area}
                     onChange={(e) => {
-                        if (mode){
+                        if (mode) {
                             setFacility({ ...facility, area: e.target.value });
                         }
                     }}
-                    disabled = {!mode}
+                    disabled={!mode}
                 >
                     <option value={'null'}>Chưa được đăng ký khu vực</option>
                     <option value={'629c67cc77b1cff0da27ee72'}>
@@ -134,25 +141,31 @@ const FacilityForm = ({value}) => {
                     <option value={'629c681077b1cff0da27ee7a'}>
                         Quận Hoàn Kiếm
                     </option>
-                    <option value={'629c67f677b1cff0da27ee76'}>Quận Tây Hồ</option>
+                    <option value={'629c67f677b1cff0da27ee76'}>
+                        Quận Tây Hồ
+                    </option>
                     <option value={'629c682177b1cff0da27ee7e'}>
                         Quận Long Biên
                     </option>
                     <option value={'629c687277b1cff0da27ee82'}>
                         Quận Bắc Từ Liêm
                     </option>
-                    <option value={'-'}>
-                        Quận Hai Bà Trưng
-                    </option>
+                    <option value={'-'}>Quận Hai Bà Trưng</option>
                     <option value={'629cda29c6bb221d0fb7b8dd'}>
                         Quận Hoàng Mai
                     </option>
-                    <option value={'629cda2fc6bb221d0fb7b8df'}>Quận Hà Đông</option>
+                    <option value={'629cda2fc6bb221d0fb7b8df'}>
+                        Quận Hà Đông
+                    </option>
                     <option value={'629c687777b1cff0da27ee84'}>
                         Quận Nam Từ Liêm
                     </option>
-                    <option value={'629cda36c6bb221d0fb7b8e1'}>Quận Đống Đa</option>
-                    <option value={'629cda69c6bb221d0fb7b8e9'}>Huyện Ba Vì</option>
+                    <option value={'629cda36c6bb221d0fb7b8e1'}>
+                        Quận Đống Đa
+                    </option>
+                    <option value={'629cda69c6bb221d0fb7b8e9'}>
+                        Huyện Ba Vì
+                    </option>
                     <option value={'629cda58c6bb221d0fb7b8e5'}>
                         Huyện Gia Lâm
                     </option>
@@ -222,7 +235,9 @@ const FacilityForm = ({value}) => {
                     }}
                 >
                     <option value={'Dịch vụ ăn uống'}>Dịch vụ ăn uống</option>
-                    <option value={'Sản xuất thực phẩm'}>Sản xuất thực phẩm</option>
+                    <option value={'Sản xuất thực phẩm'}>
+                        Sản xuất thực phẩm
+                    </option>
                 </select>
 
                 <label>Giấy phép hoạt động: </label>
@@ -246,8 +261,12 @@ const FacilityForm = ({value}) => {
                                 });
                             }}
                         >
-                            <option value={'Dịch vụ ăn uống'}>Dịch vụ ăn uống</option>
-                            <option value={'Sản xuất thực phẩm'}>Sản xuất thực phẩm</option>
+                            <option value={'Dịch vụ ăn uống'}>
+                                Dịch vụ ăn uống
+                            </option>
+                            <option value={'Sản xuất thực phẩm'}>
+                                Sản xuất thực phẩm
+                            </option>
                         </select>
                     </li>
                     <li>
@@ -265,7 +284,9 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
-                                } else if (e.target.value <= license.expireDate) {
+                                } else if (
+                                    e.target.value <= license.expireDate
+                                ) {
                                     setLicense({
                                         ...license,
                                         issueDate: e.target.value,
@@ -294,7 +315,9 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
-                                } else if (e.target.value >= license.issueDate) {
+                                } else if (
+                                    e.target.value >= license.issueDate
+                                ) {
                                     setLicense({
                                         ...license,
                                         expireDate: e.target.value,
@@ -325,7 +348,7 @@ const FacilityForm = ({value}) => {
                         </select>
                     </li>
                 </ul>
-                
+
                 <p className={msg ? 'msg' : 'offscreen'}>{msg}</p>
 
                 {mode ? (
