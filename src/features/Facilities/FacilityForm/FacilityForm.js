@@ -1,12 +1,14 @@
-import { React, useCallback, useEffect, useState } from 'react';
+import { React, useCallback, useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from '../../../api/axios';
 import './FacilityForm.css';
+import AppContext from '../../../components/AppContext/AppContext';
 
 const FACILITY_URL = '/facilities/';
 
 const FacilityForm = ({value}) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
+    const { state, dispatch } = useContext(AppContext);
     const [mode, setMode] = useState(value); 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
@@ -14,6 +16,10 @@ const FacilityForm = ({value}) => {
     const { facilityId } = useParams();
     const token = localStorage.getItem('token');
     
+    if (state.role === 'user'){
+        setFacility({...facility, area: state.area});
+    }
+
     const getFacility = useCallback(() => {
         if (mode === false) {
             axios.get(`/facilities/${facilityId}`, {
