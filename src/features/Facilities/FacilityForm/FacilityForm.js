@@ -11,13 +11,8 @@ const FacilityForm = ({ value }) => {
     const { state, dispatch } = useContext(AppContext);
     const [mode, setMode] = useState(value);
 
-<<<<<<< HEAD
     const [permission, setPermission] = useState(true);
     const [success, setSuccess] = useState(true);
-=======
-    const [ permission, setPermission ] = useState(true);
-    const [ success, setSuccess ] = useState(false);
->>>>>>> 83b92ae3070def2aa43af928a3de719ff880ccc4
 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
