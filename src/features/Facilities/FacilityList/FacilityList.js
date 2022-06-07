@@ -57,7 +57,6 @@ export default function FacilityList() {
                 },
             };
             const response = await axios(option);
-            console.log(response);
             const facilities = response.data.data.facilities;
             if (facilities) {
                 setFacilities(facilities);

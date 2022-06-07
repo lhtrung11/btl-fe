@@ -32,8 +32,8 @@ export default function InspectionList() {
 
     return (
         <>
-            <content>BẢNG DỮ LIỆU THANH TRA</content>
-            <table>
+            <h1 className='inspectionHeader'>BẢNG DỮ LIỆU THANH TRA</h1>
+            <table className='inspectionTable'>
                 <tr>
                     <th>STT</th>
                     <th>Tên cơ sở cần thanh tra</th>
