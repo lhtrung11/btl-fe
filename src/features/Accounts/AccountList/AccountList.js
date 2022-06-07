@@ -9,8 +9,6 @@ const ACCOUNT_URL = '/admin/accounts';
 const AccountList = () => {
     const { state, dispatch } = useContext(AppContext);
     const location = useLocation();
-    console.log(state);
-    
     // QUERY
     const [query, setQuery] = useState({ role: '', isActive: '', area: '' });
 
@@ -28,9 +26,6 @@ const AccountList = () => {
                 },
             };
             const response = await axios(option);
-            // setAccounts(() => {
-            //     return response.data.data.users;
-            // });
             setUsers(
                 response.data.data.users
                     .filter((account) => account.role === 'user')
@@ -90,27 +85,67 @@ const AccountList = () => {
                                         : 'Không hoạt động'}
                                 </td>
                                 <td>
-                                    {!account.area && 'Chưa được đăng ký khu vực'}
-                                    {account.area === '629c67cc77b1cff0da27ee72' && 'Quận Cầu Giấy'}
-                                    {account.area === '629c67ea77b1cff0da27ee74' && 'Quận Thanh Xuân'}
-                                    {account.area === '629c681077b1cff0da27ee7a' && 'Quận Hoàn Kiếm'}
-                                    {account.area === '629c67f677b1cff0da27ee76' && 'Quận Tây Hồ'}
-                                    {account.area === '629c682177b1cff0da27ee7e' && 'Quận Long Biên'}
-                                    {account.area === '629c687277b1cff0da27ee82' && 'Quận Bắc Từ Liêm'}
-                                    {account.area === '-' && 'Quận Hai Bà Trưng'}
-                                    {account.area === '629cda29c6bb221d0fb7b8dd' && 'Quận Hoàng Mai'}
-                                    {account.area === '629cda2fc6bb221d0fb7b8df' && 'Quận Hà Đông'}
-                                    {account.area === '629c687777b1cff0da27ee84' && 'Quận Nam Từ Liêm'}
-                                    {account.area === '629cda36c6bb221d0fb7b8e1' && 'Quận Đống Đa'}
-                                    {account.area === '629cda69c6bb221d0fb7b8e9' && 'Huyện Ba Vì'}
-                                    {account.area === '629cda58c6bb221d0fb7b8e5' && 'Huyện Gia Lâm'}
-                                    {account.area === '629cda63c6bb221d0fb7b8e7' && 'Huyện Hoài Đức'}
-                                    {account.area === '629cda78c6bb221d0fb7b8eb' && 'Huyện Mê Linh'}
-                                    {account.area === '629cda82c6bb221d0fb7b8ed' && 'Huyện Sóc Sơn'}
-                                    {account.area === '629cda9bc6bb221d0fb7b8f1' && 'Huyện Thanh Trì'}
-                                    {account.area === '629cda8bc6bb221d0fb7b8ef' && 'Huyện Thạch Thất'}
-                                    {account.area === '629cda4ec6bb221d0fb7b8e3' && 'Huyện Đan Phượng'}
-                                    {account.area === '629c682d77b1cff0da27ee80' && 'Huyện Đông Anh'}
+                                    {!account.area &&
+                                        'Chưa được đăng ký khu vực'}
+                                    {account.area ===
+                                        '629c67cc77b1cff0da27ee72' &&
+                                        'Quận Cầu Giấy'}
+                                    {account.area ===
+                                        '629c67ea77b1cff0da27ee74' &&
+                                        'Quận Thanh Xuân'}
+                                    {account.area ===
+                                        '629c681077b1cff0da27ee7a' &&
+                                        'Quận Hoàn Kiếm'}
+                                    {account.area ===
+                                        '629c67f677b1cff0da27ee76' &&
+                                        'Quận Tây Hồ'}
+                                    {account.area ===
+                                        '629c682177b1cff0da27ee7e' &&
+                                        'Quận Long Biên'}
+                                    {account.area ===
+                                        '629c687277b1cff0da27ee82' &&
+                                        'Quận Bắc Từ Liêm'}
+                                    {account.area === '-' &&
+                                        'Quận Hai Bà Trưng'}
+                                    {account.area ===
+                                        '629cda29c6bb221d0fb7b8dd' &&
+                                        'Quận Hoàng Mai'}
+                                    {account.area ===
+                                        '629cda2fc6bb221d0fb7b8df' &&
+                                        'Quận Hà Đông'}
+                                    {account.area ===
+                                        '629c687777b1cff0da27ee84' &&
+                                        'Quận Nam Từ Liêm'}
+                                    {account.area ===
+                                        '629cda36c6bb221d0fb7b8e1' &&
+                                        'Quận Đống Đa'}
+                                    {account.area ===
+                                        '629cda69c6bb221d0fb7b8e9' &&
+                                        'Huyện Ba Vì'}
+                                    {account.area ===
+                                        '629cda58c6bb221d0fb7b8e5' &&
+                                        'Huyện Gia Lâm'}
+                                    {account.area ===
+                                        '629cda63c6bb221d0fb7b8e7' &&
+                                        'Huyện Hoài Đức'}
+                                    {account.area ===
+                                        '629cda78c6bb221d0fb7b8eb' &&
+                                        'Huyện Mê Linh'}
+                                    {account.area ===
+                                        '629cda82c6bb221d0fb7b8ed' &&
+                                        'Huyện Sóc Sơn'}
+                                    {account.area ===
+                                        '629cda9bc6bb221d0fb7b8f1' &&
+                                        'Huyện Thanh Trì'}
+                                    {account.area ===
+                                        '629cda8bc6bb221d0fb7b8ef' &&
+                                        'Huyện Thạch Thất'}
+                                    {account.area ===
+                                        '629cda4ec6bb221d0fb7b8e3' &&
+                                        'Huyện Đan Phượng'}
+                                    {account.area ===
+                                        '629c682d77b1cff0da27ee80' &&
+                                        'Huyện Đông Anh'}
                                 </td>
                                 <td>
                                     <button

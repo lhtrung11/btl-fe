@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header/Header';
+import Header from './components/header/Header';
 import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
@@ -14,6 +14,7 @@ import AreaList from './features/Area/AreaList/AreaList';
 import AreaForm from './features/Area/AreaForm/AreaForm';
 import NewInspection from './features/Inspections/NewInspection/NewInspection';
 import InspectionList from './features/Inspections/InspectionList/InspectionList';
+import Inspection from './features/Inspections/InspectionForm/Inspection';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
 import { useReducer, useCallback, useEffect } from 'react';
@@ -44,7 +45,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-             localStorage.removeItem('token');
+            localStorage.removeItem('token');
         }
     }, [dispatch]);
 
@@ -97,17 +98,17 @@ function App() {
                             path="/inspections/register/:facilityId"
                             element={<NewInspection />}
                         />
-                        {/* <Route
-                            path="/inspections/:inspectionID"
-                            element={<InspectionForm />}
-                        /> */}
+                        <Route
+                            path="/inspections/:inspectionId"
+                            element={<Inspection />}
+                        />
                         <Route path="/users" element={<AccountList />} />
                         <Route path="/users/register" element={<Register />} />
                         <Route path="/users/:userId" element={<Account />} />
 
                         <Route path="/area" element={<AreaList />} />
                         <Route path="/area/register" element={<AreaForm />} />
-                        
+
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
