@@ -9,10 +9,10 @@ const FACILITY_URL = '/facilities/';
 const FacilityForm = ({ value }) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
     const { state, dispatch } = useContext(AppContext);
-    const [mode, setMode] = useState(value); 
+    const [mode, setMode] = useState(value);
 
-    const [ permission, setPermission ] = useState(true);
-    const [ success, setSuccess ] = useState(true);
+    const [permission, setPermission] = useState(true);
+    const [success, setSuccess] = useState(true);
 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
@@ -22,30 +22,38 @@ const FacilityForm = ({ value }) => {
 
     const getFacility = useCallback(() => {
         if (mode === false) {
-            axios.get(`/facilities/${facilityId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            .then((response) => {
-                if (state.role === 'user' && state.area != response.data.data.facility.area){
-                    setMsg('Bạn không được cấp phép, vui lòng quay lại');
-                }
-                else {
-                    setFacility({...facility, 
-                        name: response.data.data.facility.name,
-                        area: response.data.data.facility.area,
-                        address: response.data.data.facility.address,
-                        business: response.data.data.facility.business,
-                        contact: response.data.data.facility.contact,
-                    });
-                    setLicense({...license, business: response.data.data.facility.business,});
-                }
-            })
-            .catch((error) => {
-                setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
-                setSuccess(false);
-            })
+            axios
+                .get(`/facilities/${facilityId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((response) => {
+                    if (
+                        state.role === 'user' &&
+                        state.area != response.data.data.facility.area
+                    ) {
+                        setMsg('Bạn không được cấp phép, vui lòng quay lại');
+                    } else {
+                        setFacility({
+                            ...facility,
+                            name: response.data.data.facility.name,
+                            area: response.data.data.facility.area.name,
+                            address: response.data.data.facility.address,
+                            business: response.data.data.facility.business,
+                            contact: response.data.data.facility.contact,
+                        });
+                        setLicense({
+                            ...license,
+                            business: response.data.data.facility.business,
+                        });
+                        console.log(facility);
+                    }
+                })
+                .catch((error) => {
+                    setMsg('Không tìm thấy cơ sở phù hợp, vui lòng quay lại');
+                    setSuccess(false);
+                });
         }
     }, []);
 
@@ -97,11 +105,14 @@ const FacilityForm = ({ value }) => {
             </Link>
 
             {success && (
-                <Link to={`/inspections/register/${facilityId}`} className="backBtn">
-                    <i className="fa fa-caret-square-o-left" /> 
+                <Link
+                    to={`/inspections/register/${facilityId}`}
+                    className="backBtn"
+                >
+                    <i className="fa fa-caret-square-o-left" />
                     <text>Thanh tra cơ sở</text>
                 </Link>
-            )}        
+            )}
 
             <form
                 className="facilityForm"
@@ -137,7 +148,7 @@ const FacilityForm = ({ value }) => {
                 <label htmlFor="area">Khu vực:</label>
                 <select
                     name="area"
-                    value={state.role === 'user' ? state.area : facility?.area}
+                    value={facility.area}
                     onChange={(e) => {
                         if (mode) {
                             setFacility({ ...facility, area: e.target.value });
