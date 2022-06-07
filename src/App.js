@@ -95,8 +95,8 @@ function App() {
                             element={<FacilityForm value={false} />}
                         />
 
-                        <Route path="/area" element={<AreaForm />} />
-                        <Route path="/arealist" element={<AreaList />} />
+                        <Route path="/area/register" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
                         <Route path="/inspections/register" element={<InspectionForm />} />

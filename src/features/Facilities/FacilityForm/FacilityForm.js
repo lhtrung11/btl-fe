@@ -216,6 +216,7 @@ const FacilityForm = ({value}) => {
                     name="business"
                     value={facility?.business || ''}
                     onChange={(e) => {
+                        setMsg('');
                         setFacility({ ...facility, business: e.target.value });
                         setLicense({ ...license, business: e.target.value });
                     }}
@@ -232,6 +233,7 @@ const FacilityForm = ({value}) => {
                             name="business"
                             value={license?.business || ''}
                             onChange={(e) => {
+                                setMsg('');
                                 setFacility({
                                     ...facility,
                                     business: e.target.value,
