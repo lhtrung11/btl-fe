@@ -76,34 +76,34 @@ function App() {
                     
                         <Route path="/" element={<Home />}></Route>
 
-                        <Route element={<LoggedRoute 
+                        {/* <Route element={<LoggedRoute 
                             account={state.account} 
                             role={state.role}
                             area={state.area}
-                        />}>
+                        />}> */}
                             <Route
                                 path="/facilities/register"
                                 element={<FacilityForm value={true} />}
                             />
                             
-                            {/* <Route path="/inspections" element={<InspectionList />} />
-                            <Route path="/inspections/register" element={<InspectionForm />} />
-                            <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
-                        </Route>
-                        
-                        <Route element={<LoggedRoute account={state.account} role={state.role} />}>
-                            <Route path="/users" element={<AccountList />} />
-                            <Route path="/users/register" element={<Register />} />
-                            <Route path="/users/:userId" element={<Account />} />
-
                             <Route
                                 path="/facilities/:facilityID"
                                 element={<FacilityForm value={false} />}
                             />
+                            
+                            {/* <Route path="/inspections" element={<InspectionList />} />
+                            <Route path="/inspections/register" element={<InspectionForm />} />
+                            <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+                        {/* </Route> */}
+                        
+                        {/* <Route element={<LoggedRoute account={state.account} role={state.role} />}> */}
+                            <Route path="/users" element={<AccountList />} />
+                            <Route path="/users/register" element={<Register />} />
+                            <Route path="/users/:userId" element={<Account />} />
 
                             <Route path="/area/:areaID" element={<AreaForm />} />
                             <Route path="/area" element={<AreaList />} />
-                        </Route>
+                        {/* </Route> */}
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>
