@@ -42,7 +42,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            localStorage.removeItem('token');
+            // localStorage.removeItem('token');
         }
     }, [dispatch]);
 
@@ -50,7 +50,7 @@ function App() {
         checkCurrentUser();
     }, [checkCurrentUser]);
 
-    console.log(state);
+    // console.log(state);
     return (
         <Router>
             <AppContext.Provider value={{ state, dispatch }}>

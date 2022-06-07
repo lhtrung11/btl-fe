@@ -1,44 +1,68 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import axios from '../../../api/axios';
 import './FacilityList.css';
 
-const myFunction = () => {
-    document.getElementById('myDropdown').classList.add('show');
-};
+export default function FacilityList() {
+    const myFunction = () => {
+        document.getElementById('myDropdown').classList.add('show');
+    };
 
-const myFunction2 = () => {
-    document.getElementById('myDropdown2').classList.add('show');
-};
+    const myFunction2 = () => {
+        document.getElementById('myDropdown2').classList.add('show');
+    };
 
-const myFunction3 = () => {
-    document.getElementById('myDropdown3').classList.add('show');
-};
+    const myFunction3 = () => {
+        document.getElementById('myDropdown3').classList.add('show');
+    };
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName('dropdown-content');
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName('dropdown-content');
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
         }
-    }
-};
+    };
+    const [facilities, setFacilities] = useState([]);
 
-export default function FacilityList() {
+    const getFacilityList = useCallback(async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const option = {
+                method: 'get',
+                url: '/facilities',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            const response = await axios(option);
+            const facilities = response.data.data.facilities;
+            if (facilities) {
+                setFacilities(facilities);
+            }
+        } catch (error) {}
+    }, [setFacilities]);
+
+    useEffect(() => {
+        getFacilityList();
+    }, [getFacilityList]);
+
     return (
         <table>
             <tr>
                 <th>STT</th>
                 <th>Tên cơ sở</th>
                 <th>
-                    <button onclick="myFunction()" className="dropbtn">
+                    <button onClick={() => myFunction()} className="dropbtn">
                         Khu vực
                     </button>
-                    <div id="myDropdown" class="dropdown-content">
+                    <div id="myDropdown" className="dropdown-content">
                         <a href="#Home">Home</a>
                         <a href="#about">About</a>
                         <a href="#contact">Contact</a>
@@ -46,20 +70,20 @@ export default function FacilityList() {
                 </th>
                 <th>Số điện thoại</th>
                 <th>
-                    <button onclick="myFunction2()" class="dropbtn">
+                    <button onClick={() => myFunction2()} className="dropbtn">
                         Loại hình kinh doanh
                     </button>
-                    <div id="myDropdown2" class="dropdown-content">
+                    <div id="myDropdown2" className="dropdown-content">
                         <a href="#Home">Home</a>
                         <a href="#about">About</a>
                         <a href="#contact">Contact</a>
                     </div>
                 </th>
                 <th>
-                    <button onclick="myFunction3()" class="dropbtn">
+                    <button onClick={() => myFunction3()} className="dropbtn">
                         Giấy phép
                     </button>
-                    <div id="myDropdown3" class="dropdown-content">
+                    <div id="myDropdown3" className="dropdown-content">
                         <a href="#Home">Home</a>
                         <a href="#about">About</a>
                         <a href="#contact">Contact</a>
@@ -69,18 +93,26 @@ export default function FacilityList() {
                 <th>Chỉnh sửa</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td>Thực phẩm</td>
-                <td>Cầu Giấy</td>
-                <td>0123456789</td>
-                <td>Kinh doanh thực phẩm</td>
-                <td>Hoạt động</td>
-                <td>
-                    <button type="submit">Xóa</button>
-                </td>
-                <td>
-                    <button type="submit">Chỉnh sửa</button>
-                </td>
+                {facilities.map((fac, index) => {
+                    return (
+                        <>
+                            <td>{index}</td>
+                            <td>{fac.name}</td>
+                            <td>{fac.area.name}</td>
+                            <td>{fac.contact}</td>
+                            <td>{fac.address}</td>
+                            <td>{fac.business}</td>
+                            <td>
+                                <button type="submit" onClick>
+                                    Xóa
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit">Chỉnh sửa</button>
+                            </td>
+                        </>
+                    );
+                })}
             </tr>
         </table>
     );
