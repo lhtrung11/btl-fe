@@ -76,13 +76,16 @@ export default function FacilityList() {
 
     return (
         <>
-            <h1 className='facilityListName'>Danh sách cơ sở</h1>
+            <h1 className="facilityListName">Danh sách cơ sở</h1>
             <table className="FacilityList">
                 <tr>
                     <th>STT</th>
                     <th>Tên cơ sở</th>
                     <th>
-                        <button onClick={() => myFunction()} className="dropbtn">
+                        <button
+                            onClick={() => myFunction()}
+                            className="dropbtn"
+                        >
                             Khu vực
                         </button>
                         <div id="myDropdown" className="dropdown-content">
@@ -94,7 +97,10 @@ export default function FacilityList() {
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
                     <th>
-                        <button onClick={() => myFunction2()} className="dropbtn">
+                        <button
+                            onClick={() => myFunction2()}
+                            className="dropbtn"
+                        >
                             Loại hình kinh doanh
                         </button>
                         <div id="myDropdown2" className="dropdown-content">
@@ -104,7 +110,10 @@ export default function FacilityList() {
                         </div>
                     </th>
                     <th>
-                        <button onClick={() => myFunction3()} className="dropbtn">
+                        <button
+                            onClick={() => myFunction3()}
+                            className="dropbtn"
+                        >
                             Giấy phép
                         </button>
                         <div id="myDropdown3" className="dropdown-content">
@@ -116,38 +125,38 @@ export default function FacilityList() {
                     <th>Xóa</th>
                     <th>Chỉnh sửa</th>
                 </tr>
-                
-                    {facilities.map((fac, index) => {
-                        return (
-                            <tr> 
-                                <td>{index+1}</td>
-                                <td>{fac.name}</td>
-                                <td>{fac.area.name}</td>
-                                <td>{fac.contact}</td>
-                                <td>{fac.address}</td>
-                                <td>{fac.business}</td>
-                                <td>{fac.license?.isActive ? "Có" : "Không" }</td>
-                                <td>
-                                    <button
-                                        type="submit"
-                                        onClick={(e) => handleDelete(e)}
-                                        value={fac._id}
-                                    >
-                                        Xóa
-                                    </button>
-                                </td>
-                                <td>
-                                    <button
-                                        type="submit"
-                                        onClick={(e) => handleInsert(e)}
-                                        value={fac._id}
-                                    >
-                                        Chỉnh sửa
-                                    </button>
-                                </td>
-                            </tr>
-                        );
-                    })}
+
+                {facilities.map((fac, index) => {
+                    return (
+                        <tr>
+                            <td>{index + 1}</td>
+                            <td>{fac.name}</td>
+                            <td>{fac.area.name}</td>
+                            <td>{fac.contact}</td>
+                            <td>{fac.address}</td>
+                            <td>{fac.business}</td>
+                            <td>{fac.license?.isActive ? 'Có' : 'Không'}</td>
+                            <td>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleDelete(e)}
+                                    value={fac._id}
+                                >
+                                    Xóa
+                                </button>
+                            </td>
+                            <td>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleInsert(e)}
+                                    value={fac._id}
+                                >
+                                    Chi tiết
+                                </button>
+                            </td>
+                        </tr>
+                    );
+                })}
             </table>
         </>
     );

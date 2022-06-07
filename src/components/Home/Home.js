@@ -33,6 +33,14 @@ const Home = () => {
                 )}
 
                 <li className="dropdown">
+                    <div className="dropbtn">Quản lý cơ sở</div>
+                    <div className="content">
+                        <Link to="/facilities">Danh sách quản lý cơ sở</Link>
+                        <Link to="/facilities/register">Tạo mới một cơ sở</Link>
+                    </div>
+                </li>
+
+                <li className="dropdown">
                     <div className="dropbtn">thanh tra</div>
                     <div className="content">
                         <Link to="#">Xem lịch thanh tra</Link>
