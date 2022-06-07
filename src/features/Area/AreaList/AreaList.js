@@ -11,7 +11,7 @@ export default function AreaList() {
         const token = localStorage.getItem('token');
         const option = {
             method: 'get',
-            url: '/area',
+            url: '/areas',
             headers: {
                 Authorization: `Bearer ${token}`,
             },
