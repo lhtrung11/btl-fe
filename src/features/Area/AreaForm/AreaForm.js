@@ -64,7 +64,6 @@ const AreaForm = () => {
                     }}
                     required
                 />
-
                 <label htmlFor="managers">Tên chuyên viên:</label>
                 <input
                     placeholder="Nhập tên chuyên viên"

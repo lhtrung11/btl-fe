@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import axios from '../../../api/axios';
 import './FacilityList.css';
 
@@ -30,7 +31,7 @@ export default function FacilityList() {
         }
     };
     const [facilities, setFacilities] = useState([]);
-
+    let navigate = useNavigate();
     const getFacilityList = useCallback(async () => {
         try {
             const token = localStorage.getItem('token');
@@ -53,8 +54,28 @@ export default function FacilityList() {
         getFacilityList();
     }, [getFacilityList]);
 
+    const handleDelete = async (e) => {
+        const token = localStorage.getItem('token');
+        const facilityId = e.target.value;
+        const option = {
+            method: 'delete',
+            url: `facilities/${facilityId}`,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        await axios(option);
+        setFacilities((prevFacilities) => {
+            return prevFacilities.filter((fac) => fac._id !== facilityId);
+        });
+    };
+
+    const handleInsert = (e) => {
+        return navigate(`/facilities/${e.target.value}`);
+    };
+
     return (
-        <table className='FacilityList'>
+        <table className="FacilityList">
             <tr>
                 <th>STT</th>
                 <th>Tên cơ sở</th>
@@ -103,12 +124,22 @@ export default function FacilityList() {
                             <td>{fac.address}</td>
                             <td>{fac.business}</td>
                             <td>
-                                <button type="submit" onClick>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleDelete(e)}
+                                    value={fac._id}
+                                >
                                     Xóa
                                 </button>
                             </td>
                             <td>
-                                <button type="submit">Chỉnh sửa</button>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleInsert(e)}
+                                    value={fac._id}
+                                >
+                                    Chỉnh sửa
+                                </button>
                             </td>
                         </>
                     );
