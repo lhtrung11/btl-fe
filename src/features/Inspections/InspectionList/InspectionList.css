@@ -1,29 +1,31 @@
-table {
+.inspectionHeader {
+  padding-top: 5px;
+  text-align: center;
+  color: #04AA6D;
+  font-size: 150%;
+}
+
+.inspectionTable {
   margin-top: 2em;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-th {
+
+.inspectionTable th {
   border: 1px solid #101010c4;
   text-align: center;
   padding: 8px;
   background-color: #04AA6D;
   color: white;
 }
-td {
+
+.inspectionTable td {
   border: 1px solid #101010c4;
   text-align: center;
   padding: 8px;
 }
 
-tr:nth-child(even) {
+.inspectionTable tr:nth-child(even) {
   background-color: #dddddd;
-}
-content {
-    color: #04AA6D;
-    margin-top: 1em;
-    margin-left: 8.5em;
-    width: 100%;
-    font-size: 50px;
 }

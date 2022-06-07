@@ -32,7 +32,7 @@ export default function Inspection() {
     }, [getInspection]);
 
     return (
-        <>
+        <div className='checkingForm'>
             <button className="btn">
                 <i className="fa fa-home"></i> Home
             </button>
@@ -91,6 +91,6 @@ export default function Inspection() {
                 </table>
                 <button type="submit">Cập nhật</button>
             </form>
-        </>
+        </div>
     );
 }

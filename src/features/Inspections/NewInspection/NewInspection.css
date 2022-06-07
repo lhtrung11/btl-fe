@@ -33,7 +33,7 @@
     width: 100%;
 }
 
-.btn {
+.inspectionForm .btn {
     margin-top: 0.5rem;
     background-color: #04AA6D;
     border: none;
@@ -45,12 +45,12 @@
     cursor: pointer;
 }
 
-.btn:hover {
+.inspectionForm .btn:hover {
     color: #04AA6D;
     background-color: white;
 }
 
-label.labelDate,
-input.inputDate {
+.inspectionForm label.labelDate,
+.inspectionForm input.inputDate {
     margin: 1rem;
 }
