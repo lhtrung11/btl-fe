@@ -43,10 +43,9 @@
   cursor: pointer;
 }
 
-.FacilityList .dropdown {
+.FacilityList .dropdown-content {
   position: relative;
   display: inline-block;
-  
 }
 
 .FacilityList .dropdown-content {

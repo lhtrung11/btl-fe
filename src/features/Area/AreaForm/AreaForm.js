@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from '../../../api/axios';
 import "./AreaForm.css"
 
-const AREA_URL ='/areal';
+const AREA_URL ='admin/areas/';
 
 const AreaForm = ({value}) => {
   //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
@@ -47,12 +47,13 @@ const AreaForm = ({value}) => {
     <>
         <Link to='/area' className="backBtn">
             <i className="fa fa-caret-square-o-left" /> 
-            <text>DANH SÁCH KHU VỰC</text>
+            <text>Danh sách khu vực</text>
         </Link>
         <form 
             className="area-form" 
             onSubmit={(e) => {createArea(e)}}
         >
+            <h1>Đăng kí khu vực</h1>
             <label htmlFor="name">Tên khu vực:</label><br/>
             <input 
             placeholder="Nhập tên khu vực"
@@ -66,7 +67,11 @@ const AreaForm = ({value}) => {
                         }}
                         required>
             </input><br/>
-            <button type="submit">Đăng ký</button>
+            <p className={msg ? 'msg' : 'offscreen'}>{msg}</p>
+            <button
+             type="submit"
+             onSubmit={(e)=>{createArea(e)}}
+            >Đăng ký</button>
         </form>
     </>
   )
