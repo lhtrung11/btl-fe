@@ -74,21 +74,27 @@ function App() {
                             }
                         />
                         <Route path="/" element={<Home />}></Route>
+                        
+                        <Route path="/area/register" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />            
+                        <Route path="/users" element={<AccountList />} />
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
                         <Route path="/facilities" element={<FacilityList />} />
                         <Route
-                            path="/facilities/:facilityId"
-                            element={<FacilityForm value={false} />}
-                        />
-                        <Route
-                            path="/facilities/register"
-                            element={<FacilityForm value={true} />}
+                        path="/facilities/register"
+                        element={<FacilityForm value={true} />}
                         />
                         <Route
                             path="/facilities/:facilityID"
                             element={<FacilityForm value={false} />}
                         />
+<<<<<<< Updated upstream
                         <Route path="/area/:areaID" element={<AreaForm />} />
                         <Route path="/area" element={<AreaList />} />
+=======
+
+>>>>>>> Stashed changes
                         <Route
                             path="/inspections"
                             element={<InspectionList />}
@@ -101,15 +107,54 @@ function App() {
                             path="/inspections/:inspectionID"
                             element={<InspectionForm />}
                         /> */}
-                        <Route path="/users" element={<AccountList />} />
-                        <Route path="/users/register" element={<Register />} />
-                        <Route path="/users/:userId" element={<Account />} />
 
                         <Route path="/area" element={<AreaList />} />
                         <Route path="/area/register" element={<AreaForm />} />
-                        
+                        {/* <Route element={<LoggedRoute account={state.account} /> }>
+                            {/* ADMIN ONLY ROUTE */}
+                            <Route element={<AdminRoute 
+                                account={state.account} 
+                                role={state.role} /> 
+                            }>
+                                <Route path="/area/register" element={<AreaForm />} />
+                                <Route path="/area" element={<AreaList />} />            
+                                <Route path="/users" element={<AccountList />} />
+                                <Route path="/users/register" element={<Register />} />
+                                <Route path="/users/:userId" element={<Account />} />
+                            </Route>
+
+                            <Route path="/facilities" element={<FacilityList />} />
+                            <Route
+                                path="/facilities/register"
+                                element={<FacilityForm value={true} />}
+                            />
+                            <Route
+                                path="/facilities/:facilityID"
+                                element={<FacilityForm value={false} />}
+                            />
+
+                            <Route
+                                path="/inspections"
+                                element={<InspectionList />}
+                            />
+                            <Route
+                                path="/inspections/register/:facilityId"
+                                element={<NewInspection />}
+                            />
+                            {/* <Route
+                                path="/inspections/:inspectionID"
+                                element={<InspectionForm />}
+                            /> }
+
+                            <Route path="/area" element={<AreaList />} />
+                            <Route path="/area/register" element={<AreaForm />} />
+                    
+                        </Route> */}
+
                         <Route path="*" element={<NotFound />} />
                     </Routes>
+
+    
                 </div>
             </AppContext.Provider>
         </Router>
