@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useCallback, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import axios from '../../../api/axios';
 import './FacilityForm.css';
 
@@ -7,16 +7,38 @@ const FACILITY_URL = '/facilities/';
 
 const FacilityForm = ({value}) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
-    const [mode, setMode] = useState(value); //true -> đăng ký, false -> chỉnh sửa
+    const [mode, setMode] = useState(value); 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
-    // const [address, setAddress] = useState("");
-    const [license, setLicense] = useState({
-        // business: null,
-        // issueDate: null,
-        // expireDate: null,
-        // isActive: false,
-    });
+    const [license, setLicense] = useState({});
+    const { facilityId } = useParams();
+    const token = localStorage.getItem('token');
+    
+    const getFacility = useCallback(() => {
+        if (mode === false) {
+            axios.get(`/facilities/${facilityId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                console.log(response);
+                setFacility({...facility, 
+                    name: response.data.data.facility.name,
+                    area: response.data.data.facility.area,
+                    address: response.data.data.facility.address,
+                    business: response.data.data.facility.business,
+                    contact: response.data.data.facility.contact,
+                });
+                setLicense({...license, business: response.data.data.facility.business,});
+            })
+            .catch((error) => {
+                setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
+            })
+        }
+    }, [ ])
+
+    useEffect(() => getFacility(), [ getFacility ]);
 
     const createFacility = async (e) => {
         e.preventDefault();
@@ -33,7 +55,7 @@ const FacilityForm = ({value}) => {
             const response = await axios(option);
             setMsg('Đăng ký cơ sở mới thành công!');
         } catch (error) {
-            console.log(error);
+            setMsg('Đăng ký không thành công');
         }
     };
     const updateFacility = async (e) => {
@@ -41,7 +63,6 @@ const FacilityForm = ({value}) => {
         try {
         } catch (err) {
             setMsg('Chỉnh sửa không thành công');
-            console.log(err);
         }
     };
 
@@ -73,8 +94,11 @@ const FacilityForm = ({value}) => {
                     name="name"
                     value={facility?.name || ''}
                     onChange={(e) => {
-                        setFacility({ ...facility, name: e.target.value });
+                        if (mode === true) {
+                            setFacility({ ...facility, name: e.target.value });
+                        }
                     }}
+                    disabled={ mode ? false : true}
                     required
                 />
 
@@ -141,7 +165,6 @@ const FacilityForm = ({value}) => {
                     </option>
                 </select>
 
-                {/* <label>Địa chỉ:</label> */}
                 <label htmlFor="address">Địa chỉ</label>
                 <input
                     placeholder="Nhập địa chỉ chi tiết"
@@ -153,48 +176,6 @@ const FacilityForm = ({value}) => {
                     }}
                     required
                 />
-                {/* <ul>
-                    <li>
-                        <label htmlFor="ward">Xã phường:</label>
-                        <input
-                            placeholder="Nhập xã/phường"
-                            type="text"
-                            name="ward"
-                            value={address?.ward || ''}
-                            onChange={(e) => {
-                                setAddress({ ...address, ward: e.target.value });
-                            }}
-                            required
-                        />
-                    </li>
-                    <li>
-                        <label htmlFor="street">Phố:</label>
-                        <input
-                            placeholder="Nhập tên phố"
-                            type="text"
-                            name="street"
-                            value={address?.street || ''}
-                            onChange={(e) => {
-                                setAddress({ ...address, street: e.target.value });
-                            }}
-                            required
-                        />
-                    </li>
-                    <li>
-                        <label htmlFor="detail">
-                            Chi tiết khác (Không bắt buộc):
-                        </label>
-                        <input
-                            placeholder="Nhập các thông tin khác"
-                            type="text"
-                            name="detail"
-                            value={address?.detail || ''}
-                            onChange={(e) => {
-                                setAddress({ ...address, detail: e.target.value });
-                            }}
-                        />
-                    </li>
-                </ul> */}
 
                 <label htmlFor="contact">Số điện thoại:</label>
                 <input
