@@ -44,7 +44,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            // localStorage.removeItem('token');
+             localStorage.removeItem('token');
         }
     }, [dispatch]);
 

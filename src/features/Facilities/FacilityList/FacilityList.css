@@ -1,5 +1,5 @@
 .FacilityList {
-  margin-top: 2em;
+  margin-top: 0.5em;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -109,3 +109,12 @@
 .FacilityList .dropdown a:hover {background-color: white;}
 
 .FacilityList .show {display: block;}
+
+.listName {
+  padding-top: 1rem;
+  font-size: 200%;
+  color: #04AA6D;
+  margin: auto;
+  text-transform: uppercase;
+  text-align: center;
+}
