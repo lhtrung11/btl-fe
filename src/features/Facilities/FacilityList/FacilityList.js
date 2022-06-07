@@ -130,61 +130,6 @@ export default function FacilityList() {
             <tr>
                 {facilities.map((fac, index) => {
                     return (
-                        <>
-                            <td>{index}</td>
-        <>
-            <h1 className="facilityListName">Danh sách cơ sở</h1>
-            <table className="FacilityList">
-                <tr>
-                    <th>STT</th>
-                    <th>Tên cơ sở</th>
-                    <th>
-                        <button
-                            onClick={() => myFunction()}
-                            className="dropbtn"
-                        >
-                            Khu vực
-                        </button>
-                        <div id="myDropdown" className="dropdown-content">
-                            <a href="#Home">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                    </th>
-                    <th>Số điện thoại</th>
-                    <th>Địa chỉ</th>
-                    <th>
-                        <button
-                            onClick={() => myFunction2()}
-                            className="dropbtn"
-                        >
-                            Loại hình kinh doanh
-                        </button>
-                        <div id="myDropdown2" className="dropdown-content">
-                            <a href="#Home">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                    </th>
-                    <th>
-                        <button
-                            onClick={() => myFunction3()}
-                            className="dropbtn"
-                        >
-                            Giấy phép
-                        </button>
-                        <div id="myDropdown3" className="dropdown-content">
-                            <a href="#Home">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                    </th>
-                    <th>Xóa</th>
-                    <th>Chỉnh sửa</th>
-                </tr>
-
-                {facilities.map((fac, index) => {
-                    return (
                         <tr>
                             <td>{index + 1}</td>
                             <td>{fac.name}</td>
@@ -208,21 +153,12 @@ export default function FacilityList() {
                                     onClick={(e) => handleInsert(e)}
                                     value={fac._id}
                                 >
-                                    Chỉnh sửa
-                                </button>
-                            </td>
-                        </>
-                    );
-                })}
-            </tr>
-        </table>
                                     Chi tiết
                                 </button>
                             </td>
-                        </tr>
                     );
                 })}
-            </table>
+        </table>
         </>
     );
 }
