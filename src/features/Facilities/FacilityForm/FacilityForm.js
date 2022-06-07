@@ -11,8 +11,13 @@ const FacilityForm = ({ value }) => {
     const { state, dispatch } = useContext(AppContext);
     const [mode, setMode] = useState(value);
 
+<<<<<<< HEAD
     const [permission, setPermission] = useState(true);
     const [success, setSuccess] = useState(true);
+=======
+    const [ permission, setPermission ] = useState(true);
+    const [ success, setSuccess ] = useState(false);
+>>>>>>> 83b92ae3070def2aa43af928a3de719ff880ccc4
 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
@@ -75,6 +80,7 @@ const FacilityForm = ({ value }) => {
             setMsg('Đăng ký cơ sở mới thành công!');
         } catch (error) {
             setMsg('Đăng ký không thành công');
+            setSuccess(false);
         }
     };
     const updateFacility = async (e) => {
@@ -154,7 +160,7 @@ const FacilityForm = ({ value }) => {
                             setFacility({ ...facility, area: e.target.value });
                         }
                     }}
-                    disabled={!mode}
+                    disabled={!mode || state.role != 'user'}
                 >
                     <option value={'null'}>Chưa được đăng ký khu vực</option>
                     <option value={'629c67cc77b1cff0da27ee72'}>
