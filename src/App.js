@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
+import AdminRoute from './components/ProtectedRoute/AdminRoute';
+import LoggedRoute from './components/ProtectedRoute/LoggedRoute';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
 import Register from './features/Accounts/NewAccount/Register';
@@ -50,7 +52,6 @@ function App() {
         checkCurrentUser();
     }, [checkCurrentUser]);
 
-    // console.log(state);
     return (
         <Router>
             <AppContext.Provider value={{ state, dispatch }}>
@@ -72,27 +73,37 @@ function App() {
                                 </div>
                             }
                         />
-                        <Route path="/" element={<Home />}></Route>
-                        <Route path="/users" element={<AccountList />} />
-                        <Route path="/users/register" element={<Register />} />
-                        <Route path="/users/:userId" element={<Account />} />
 
-                        <Route path="/facilities" element={<FacilityList />} />
+                        <Route path="/" element={<Home />}></Route>
+
+                        {/* <Route element={<LoggedRoute 
+                            account={state.account} 
+                            role={state.role}
+                            area={state.area}
+                        />}> */}
                         <Route
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
                         />
+
                         <Route
                             path="/facilities/:facilityID"
                             element={<FacilityForm value={false} />}
                         />
 
+                        {/* <Route path="/inspections" element={<InspectionList />} />
+                            <Route path="/inspections/register" element={<InspectionForm />} />
+                            <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+                        {/* </Route> */}
+
+                        {/* <Route element={<LoggedRoute account={state.account} role={state.role} />}> */}
+                        <Route path="/users" element={<AccountList />} />
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
+
                         <Route path="/area/:areaID" element={<AreaForm />} />
                         <Route path="/area" element={<AreaList />} />
-
-                        {/* <Route path="/inspections" element={<InspectionList />} />
-                        <Route path="/inspections/register" element={<InspectionForm />} />
-                        <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+                        {/* </Route> */}
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

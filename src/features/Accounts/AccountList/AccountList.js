@@ -9,7 +9,8 @@ const ACCOUNT_URL = '/admin/accounts';
 const AccountList = () => {
     const { state, dispatch } = useContext(AppContext);
     const location = useLocation();
-
+    console.log(state);
+    
     // QUERY
     const [query, setQuery] = useState({ role: '', isActive: '', area: '' });
 

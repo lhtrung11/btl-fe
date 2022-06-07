@@ -65,6 +65,18 @@ const AreaForm = () => {
                     required
                 />
 
+                <label htmlFor="managers">Tên chuyên viên:</label>
+                <input
+                    placeholder="Nhập tên chuyên viên"
+                    type="text"
+                    name="managers"
+                    value={area?.manager || ''}
+                    onChange={(e) => {
+                        setArea({ ...area, manager: e.target.value });
+                    }}
+                    required
+                />
+
                 <button type="submit">Đăng ký</button>
             </form>
         </>

@@ -54,7 +54,7 @@ export default function FacilityList() {
     }, [getFacilityList]);
 
     return (
-        <table>
+        <table className='FacilityList'>
             <tr>
                 <th>STT</th>
                 <th>Tên cơ sở</th>
