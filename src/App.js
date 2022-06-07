@@ -81,14 +81,14 @@ function App() {
                             role={state.role}
                             area={state.area}
                         />}> */}
+                        <Route path="/facilities" element={<FacilityList />} />
+                        <Route
+                            path="/facilities/:facilityId"
+                            element={<FacilityForm value={false} />}
+                        />
                         <Route
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
-                        />
-
-                        <Route
-                            path="/facilities/:facilityID"
-                            element={<FacilityForm value={false} />}
                         />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
