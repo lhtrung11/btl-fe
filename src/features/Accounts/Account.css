@@ -1,4 +1,4 @@
-.form{
+.accountForm{
   font-size: 1.5em;
   margin-top: 4em;
   margin-left: 400px;
@@ -8,7 +8,7 @@
   padding: 10px;
 }
 
-.form button {
+.accountForm button {
 background-color: #04AA6D;
 color: white;
 padding: 8px 14px;
@@ -16,4 +16,10 @@ margin: 8px 0;
 border: none;
 cursor: pointer;
 width: 100%;
+}
+
+.accountForm .msg {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  color: red;
 }

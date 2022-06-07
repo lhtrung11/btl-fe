@@ -1,10 +1,19 @@
 import './App.css';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
+import NotFound from './components/NotFound/NotFound';
+import AdminRoute from './components/ProtectedRoute/AdminRoute';
+import LoggedRoute from './components/ProtectedRoute/LoggedRoute';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
+import Register from './features/Accounts/NewAccount/Register';
 import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
+import AreaList from './features/Area/AreaList/AreaList';
+import AreaForm from './features/Area/AreaForm/AreaForm';
+import NewInspection from './features/Inspections/NewInspection/NewInspection';
+import InspectionList from './features/Inspections/InspectionList/InspectionList';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
 import { useReducer, useCallback, useEffect } from 'react';
@@ -35,9 +44,10 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            
+             localStorage.removeItem('token');
         }
     }, [dispatch]);
+
     useEffect(() => {
         checkCurrentUser();
     }, [checkCurrentUser]);
@@ -48,30 +58,57 @@ function App() {
                 <div>
                     <Header />
                     <Routes>
-                        {/* <Route element={<ProtectedRoute user={state.user} />}>
-                            <Route path="/students" element={<List />} />
-                            <Route path="/form" element={<Form />} />
-                            <Route
-                                path="/students/:studentId"
-                                element={<Form />}
-                            />
-                        </Route> */}
-                        <Route path="/auth/login" element={
-                            <div className='middle'>
-                                <p className='intro'>
-                                    <h1>Trang đăng nhập dành cho nhà quản lý</h1>
-                                    Hãy đăng nhập để có thể truy cập thông tin bạn cần
-                                </p> 
-                                <Login /> 
-                            </div>
-                        } />
-                        <Route path="/users/:userId" element={<Account />} />
+                        <Route
+                            path="/auth/login"
+                            element={
+                                <div className="middle">
+                                    <p className="intro">
+                                        <h1>
+                                            Trang đăng nhập dành cho nhà quản lý
+                                        </h1>
+                                        Hãy đăng nhập để có thể truy cập thông
+                                        tin bạn cần
+                                    </p>
+                                    <Login />
+                                </div>
+                            }
+                        />
+                        <Route path="/" element={<Home />}></Route>
+                        <Route path="/facilities" element={<FacilityList />} />
+                        <Route
+                            path="/facilities/:facilityId"
+                            element={<FacilityForm value={false} />}
+                        />
+                        <Route
+                            path="/facilities/register"
+                            element={<FacilityForm value={true} />}
+                        />
+                        <Route
+                            path="/facilities/:facilityID"
+                            element={<FacilityForm value={false} />}
+                        />
+                        <Route path="/area/:areaID" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />
+                        <Route
+                            path="/inspections"
+                            element={<InspectionList />}
+                        />
+                        <Route
+                            path="/inspections/register/:facilityId"
+                            element={<NewInspection />}
+                        />
+                        {/* <Route
+                            path="/inspections/:inspectionID"
+                            element={<InspectionForm />}
+                        /> */}
                         <Route path="/users" element={<AccountList />} />
-                        
-                        <Route path="/facilities" element={<FacilityForm />} />
-                        {/* <Route path="/facilities" element={<FacilityList />} /> */}
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
 
-                        <Route path="*" element={<div>Page not found</div>} />
+                        <Route path="/area" element={<AreaList />} />
+                        <Route path="/area/register" element={<AreaForm />} />
+                        
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
             </AppContext.Provider>
