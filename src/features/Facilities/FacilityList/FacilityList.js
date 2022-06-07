@@ -57,6 +57,7 @@ export default function FacilityList() {
                 },
             };
             const response = await axios(option);
+            console.log(response);
             const facilities = response.data.data.facilities;
             if (facilities) {
                 setFacilities(facilities);
@@ -101,7 +102,7 @@ export default function FacilityList() {
                         <button onClick={() => myFunction2()} class="dropbtn">
                             Loại hình kinh doanh
                         </button>
-                        <div id="myDropdown2" class="dropdown-content1">
+                        <div id="myDropdown2" className="dropdown-content1">
                             <a href="#Home">Home</a>
                             <a href="#about">About</a>
                             <a href="#contact">Contact</a>
@@ -109,10 +110,10 @@ export default function FacilityList() {
                     </th>
                     <th>Loại hình kinh doanh</th>
                     <th>
-                        <button onClick={() => myFunction3()} class="dropbtn">
+                        <button onClick={() => myFunction3()} className="dropbtn">
                             Giấy phép
                         </button>
-                        <div id="myDropdown3" class="dropdown-content2">
+                        <div id="myDropdown3" className="dropdown-content2">
                             <a href="#Home">Home</a>
                             <a href="#about">About</a>
                             <a href="#contact">Contact</a>

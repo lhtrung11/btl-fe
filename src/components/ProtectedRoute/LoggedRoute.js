@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router";
 
-export default function ProtectedRoute({
+export default function LoggedRoute({
     account,
-    redirectPath = "/auth/login",
+    redirectPath='/',
     children,
 }) {
     if (!account) {

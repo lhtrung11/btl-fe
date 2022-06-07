@@ -75,11 +75,13 @@ function App() {
                             }
                         />
                         <Route path="/" element={<Home />}></Route>
+
+                        <Route path="/area/register" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />
+                        <Route path="/users" element={<AccountList />} />
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
                         <Route path="/facilities" element={<FacilityList />} />
-                        <Route
-                            path="/facilities/:facilityId"
-                            element={<FacilityForm value={false} />}
-                        />
                         <Route
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
@@ -89,7 +91,7 @@ function App() {
                             element={<FacilityForm value={false} />}
                         />
                         <Route path="/area/:areaID" element={<AreaForm />} />
-                        <Route path="/area" element={<AreaList />} />
+
                         <Route
                             path="/inspections"
                             element={<InspectionList />}

@@ -17,6 +17,7 @@ export default function InspectionList() {
                 },
             };
             const response = await axios(option);
+            console.log(response);
             setInspections(response.data?.data?.inspections);
         } catch (error) {}
     }, []);
