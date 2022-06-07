@@ -104,8 +104,10 @@ function App() {
                         <Route path="/users" element={<AccountList />} />
                         <Route path="/users/register" element={<Register />} />
                         <Route path="/users/:userId" element={<Account />} />
-                        <Route path="/area/:areaID" element={<AreaForm />} />
+
                         <Route path="/area" element={<AreaList />} />
+                        <Route path="/area/register" element={<AreaForm />} />
+                        
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>

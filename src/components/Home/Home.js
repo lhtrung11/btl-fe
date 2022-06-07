@@ -26,8 +26,8 @@ const Home = () => {
                     <li className="dropdown">
                         <div className="dropbtn">khu vực quản lý</div>
                         <div className="content">
-                            <Link to="arealist">Danh sách các khu vực</Link>
-                            <Link to="area">Đăng ký khu vực mới</Link>
+                            <Link to="/area">Danh sách các khu vực</Link>
+                            <Link to="/area/register">Đăng ký khu vực mới</Link>
                         </div>
                     </li>
                 )}
@@ -41,9 +41,9 @@ const Home = () => {
                 </li>
 
                 <li className="dropdown">
-                    <div className="dropbtn">thanh tra</div>
+                    <div className="dropbtn">Thanh tra</div>
                     <div className="content">
-                        <Link to="#">Xem lịch thanh tra</Link>
+                        <Link to="/inspections">Bảng dữ liệu thanh tra</Link>
                     </div>
                 </li>
             </ul>
