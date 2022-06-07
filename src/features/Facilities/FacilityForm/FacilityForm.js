@@ -10,15 +10,15 @@ const FacilityForm = ({value}) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
     const { state, dispatch } = useContext(AppContext);
     const [mode, setMode] = useState(value); 
+
+    const [ permission, setPermission ] = useState(true);
+    const [ success, setSuccess ] = useState(true);
+
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
     const [license, setLicense] = useState({});
     const { facilityId } = useParams();
     const token = localStorage.getItem('token');
-    
-    if (state.role === 'user'){
-        setFacility({...facility, area: state.area});
-    }
 
     const getFacility = useCallback(() => {
         if (mode === false) {
@@ -28,17 +28,23 @@ const FacilityForm = ({value}) => {
                 },
             })
             .then((response) => {
-                setFacility({...facility, 
-                    name: response.data.data.facility.name,
-                    area: response.data.data.facility.area,
-                    address: response.data.data.facility.address,
-                    business: response.data.data.facility.business,
-                    contact: response.data.data.facility.contact,
-                });
-                setLicense({...license, business: response.data.data.facility.business,});
+                if (state.role === 'user' && state.area != response.data.data.facility.area){
+                    setMsg('Bạn không được cấp phép, vui lòng quay lại');
+                }
+                else {
+                    setFacility({...facility, 
+                        name: response.data.data.facility.name,
+                        area: response.data.data.facility.area,
+                        address: response.data.data.facility.address,
+                        business: response.data.data.facility.business,
+                        contact: response.data.data.facility.contact,
+                    });
+                    setLicense({...license, business: response.data.data.facility.business,});
+                }
             })
             .catch((error) => {
                 setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
+                setSuccess(false);
             })
         }
     }, [ ])
@@ -90,6 +96,13 @@ const FacilityForm = ({value}) => {
                 <text>Danh sách cơ sở</text>
             </Link>
 
+            {success && (
+                <Link to={`/inspections/register/${facilityId}`} className="backBtn">
+                    <i className="fa fa-caret-square-o-left" /> 
+                    <text>Thanh tra cơ sở</text>
+                </Link>
+            )}        
+
             <form
                 className="facilityForm"
                 onSubmit={
@@ -122,9 +135,10 @@ const FacilityForm = ({value}) => {
                 <label htmlFor="area">Khu vực:</label>
                 <select
                     name="area"
-                    value={facility?.area}
+                    value={state.role === 'user' ? state.area : facility?.area}
                     onChange={(e) => {
-                        if (mode){
+                        if (mode && state.role === 'admin'){
+                            console.log(state.role);
                             setFacility({ ...facility, area: e.target.value });
                         }
                     }}
