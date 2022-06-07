@@ -12,7 +12,7 @@ const FacilityForm = ({ value }) => {
     const [mode, setMode] = useState(value); 
 
     const [ permission, setPermission ] = useState(true);
-    const [ success, setSuccess ] = useState(true);
+    const [ success, setSuccess ] = useState(false);
 
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
@@ -32,6 +32,7 @@ const FacilityForm = ({ value }) => {
                     setMsg('Bạn không được cấp phép, vui lòng quay lại');
                 }
                 else {
+                    setSuccess(true);
                     setFacility({...facility, 
                         name: response.data.data.facility.name,
                         area: response.data.data.facility.area,
@@ -44,7 +45,7 @@ const FacilityForm = ({ value }) => {
             })
             .catch((error) => {
                 setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
-                setSuccess(false);
+                setPermission(false);
             })
         }
     }, []);
@@ -67,6 +68,7 @@ const FacilityForm = ({ value }) => {
             setMsg('Đăng ký cơ sở mới thành công!');
         } catch (error) {
             setMsg('Đăng ký không thành công');
+            setSuccess(false);
         }
     };
     const updateFacility = async (e) => {
@@ -143,7 +145,7 @@ const FacilityForm = ({ value }) => {
                             setFacility({ ...facility, area: e.target.value });
                         }
                     }}
-                    disabled={!mode}
+                    disabled={!mode || state.role != 'user'}
                 >
                     <option value={'null'}>Chưa được đăng ký khu vực</option>
                     <option value={'629c67cc77b1cff0da27ee72'}>
