@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import AppContext from './components/AppContext/AppContext';
 import NotFound from './components/NotFound/NotFound';
+import AdminRoute from './components/ProtectedRoute/AdminRoute';
+import LoggedRoute from './components/ProtectedRoute/LoggedRoute';
 import Account from './features/Accounts/Account';
 import AccountList from './features/Accounts/AccountList/AccountList';
 import Register from './features/Accounts/NewAccount/Register';
@@ -42,7 +44,7 @@ function App() {
                 dispatch({ type: 'CURRENT_USER', payload: document });
             }
         } catch (error) {
-            localStorage.removeItem('token');
+            // localStorage.removeItem('token');
         }
     }, [dispatch]);
 
@@ -56,14 +58,6 @@ function App() {
                 <div>
                     <Header />
                     <Routes>
-                        {/* <Route element={<ProtectedRoute user={state.user} />}>
-                            <Route path="/students" element={<List />} />
-                            <Route path="/form" element={<Form />} />
-                            <Route
-                                path="/students/:studentId"
-                                element={<Form />}
-                            />
-                        </Route> */}
                         <Route
                             path="/auth/login"
                             element={
@@ -81,11 +75,17 @@ function App() {
                         />
 
                         <Route path="/" element={<Home />}></Route>
-                        <Route path="/users" element={<AccountList />} />
-                        <Route path="/users/register" element={<Register />} />
-                        <Route path="/users/:userId" element={<Account />} />
 
-                        {/* <Route path="/facilities" element={<FacilityList />} /> */}
+                        {/* <Route element={<LoggedRoute 
+                            account={state.account} 
+                            role={state.role}
+                            area={state.area}
+                        />}> */}
+                        <Route path="/facilities" element={<FacilityList />} />
+                        <Route
+                            path="/facilities/:facilityId"
+                            element={<FacilityForm value={false} />}
+                        />
                         <Route
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
@@ -99,8 +99,18 @@ function App() {
                         <Route path="/area" element={<AreaList />} />
 
                         {/* <Route path="/inspections" element={<InspectionList />} />
-                        <Route path="/inspections/register" element={<InspectionForm />} />
-                        <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+                            <Route path="/inspections/register" element={<InspectionForm />} />
+                            <Route path="/inspections/:inspectionID" element={<InspectionForm />} /> */}
+                        {/* </Route> */}
+
+                        {/* <Route element={<LoggedRoute account={state.account} role={state.role} />}> */}
+                        <Route path="/users" element={<AccountList />} />
+                        <Route path="/users/register" element={<Register />} />
+                        <Route path="/users/:userId" element={<Account />} />
+
+                        <Route path="/area/:areaID" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />
+                        {/* </Route> */}
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

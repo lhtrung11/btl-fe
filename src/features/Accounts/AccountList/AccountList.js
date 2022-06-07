@@ -9,11 +9,12 @@ const ACCOUNT_URL = '/admin/accounts';
 const AccountList = () => {
     const { state, dispatch } = useContext(AppContext);
     const location = useLocation();
-
+    console.log(state);
+    
     // QUERY
     const [query, setQuery] = useState({ role: '', isActive: '', area: '' });
 
-    const { accounts } = state;
+    // const [accounts, setAccounts] = useState([]);
     const [users, setUsers] = useState([]);
 
     const getAllAccounts = useCallback(async () => {
@@ -27,10 +28,11 @@ const AccountList = () => {
                 },
             };
             const response = await axios(option);
-            const accounts = response.data.data.users;
-            dispatch({ type: 'GET_ALL_ACCOUNTS', payload: accounts });
+            // setAccounts(() => {
+            //     return response.data.data.users;
+            // });
             setUsers(
-                accounts
+                response.data.data.users
                     .filter((account) => account.role === 'user')
                     .sort((account1, account2) => {
                         if (account2.isActive === false) {
@@ -41,7 +43,7 @@ const AccountList = () => {
                     })
             );
         } catch (error) {}
-    }, [dispatch]);
+    }, []);
 
     const handleDelete = async (e) => {
         const token = localStorage.getItem('token');
@@ -54,74 +56,73 @@ const AccountList = () => {
             },
         };
         await axios(option);
-        dispatch({ type: 'DELETE_ONE_ACCOUNT', payload: userID });
+        setUsers((prevUsers) => {
+            return prevUsers.filter((user) => user._id !== userID);
+        });
     };
 
     useEffect(() => {
         getAllAccounts();
-    }, [getAllAccounts, accounts]);
+    }, [getAllAccounts]);
 
-    return (
-        state.role==='admin' ? (
-            <>
-                <h1 className="listName">quản lý người dùng</h1>
-                <table className="list">
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên tài khoản</th>
-                        <th>Trạng thái</th>
-                        <th>Khu vực</th>
-                        <th>Xóa tài khoản</th>
-                        <th>Chỉnh sửa</th>
-                    </tr>
+    return state.role === 'admin' ? (
+        <>
+            <h1 className="listName">quản lý người dùng</h1>
+            <table className="list">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th>Khu vực</th>
+                    <th>Xóa tài khoản</th>
+                    <th>Chỉnh sửa</th>
+                </tr>
 
-                    {accounts ? (
-                        users.map((account, key) => {
-                            return (
-                                <tr>
-                                    <td>{key + 1}</td>
-                                    <td>{account.username}</td>
-                                    <td>
-                                        {account.isActive
-                                            ? 'Hoạt động'
-                                            : 'Không hoạt động'}
-                                    </td>
-                                    <td>
-                                        {account.area
-                                            ? account.area
-                                            : 'Chưa được đăng ký khu vực'}
-                                    </td>
-                                    <td>
-                                        <button
-                                            type="submit"
-                                            value={account._id}
-                                            onClick={(e) => handleDelete(e)}
-                                        >
-                                            Xóa
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button
-                                            value={account.username}
-                                            type="submit"
-                                        >
-                                            <a href={`users/${account._id}`}>
-                                                Chỉnh sửa
-                                            </a>
-                                        </button>
-                                    </td>
-                                </tr>
-                            );
-                        })
-                    ) : (
-                        <p>Không có dữ liệu</p>
-                    )}
-                </table>
-            </>
-        ) : (
-            <Navigate to="/" state={{ from: location }} replace />
-        )
-        
+                {users ? (
+                    users.map((account, key) => {
+                        return (
+                            <tr>
+                                <td>{key + 1}</td>
+                                <td>{account.username}</td>
+                                <td>
+                                    {account.isActive
+                                        ? 'Hoạt động'
+                                        : 'Không hoạt động'}
+                                </td>
+                                <td>
+                                    {account.area
+                                        ? account.area
+                                        : 'Chưa được đăng ký khu vực'}
+                                </td>
+                                <td>
+                                    <button
+                                        type="submit"
+                                        value={account._id}
+                                        onClick={(e) => handleDelete(e)}
+                                    >
+                                        Xóa
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        value={account.username}
+                                        type="submit"
+                                    >
+                                        <a href={`users/${account._id}`}>
+                                            Chỉnh sửa
+                                        </a>
+                                    </button>
+                                </td>
+                            </tr>
+                        );
+                    })
+                ) : (
+                    <p>Không có dữ liệu</p>
+                )}
+            </table>
+        </>
+    ) : (
+        <Navigate to="/" state={{ from: location }} replace />
     );
 };
 

@@ -34,31 +34,24 @@ const AreaForm = ({value}) => {
             console.log(error);
         }
     };
-  const updateArea = async (e) => {
-        e.preventDefault();
-        try {
-        } catch (err) {
-            setMsg('Chỉnh sửa không thành công');
-            console.log(err);
-        }
-    };
+//   const updateArea = async (e) => {
+//         e.preventDefault();
+//         try {
+//         } catch (err) {
+//             setMsg('Chỉnh sửa không thành công');
+//             console.log(err);
+//         }
+//     };
 
   return (
     <>
         <Link to='/area' className="backBtn">
             <i className="fa fa-caret-square-o-left" /> 
-            <text>Khu VỰC</text>
+            <text>DANH SÁCH KHU VỰC</text>
         </Link>
         <form 
-        class="area-form" onSubmit={
-        mode
-            ? (e) => {
-                createArea(e);
-            }
-            : (e) => {
-                updateArea(e);
-            }
-        }
+            className="area-form" 
+            onSubmit={(e) => {createArea(e)}}
         >
             <label htmlFor="name">Tên khu vực:</label><br/>
             <input 
@@ -79,4 +72,4 @@ const AreaForm = ({value}) => {
   )
 }
 
-export default AreaForm
+export default AreaForm;
