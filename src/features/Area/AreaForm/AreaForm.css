@@ -29,3 +29,8 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+.area-form .msg {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  color: red;
+}

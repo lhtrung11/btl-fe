@@ -22,18 +22,6 @@ const Home = () => {
                     </li>
                 )}
 
-                <li className="dropdown">
-                    <div className="dropbtn">cơ sở kinh doanh</div>
-                    <div className="content">
-                        <Link to="/facilities">
-                            Danh sách các cơ sở kinh doanh
-                        </Link>
-                        <Link to="/facilities/register">
-                            Đăng ký cơ sở kinh doanh mới
-                        </Link>
-                    </div>
-                </li>
-
                 {state.role === 'admin' && (
                     <li className="dropdown">
                         <div className="dropbtn">khu vực quản lý</div>

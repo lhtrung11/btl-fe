@@ -90,6 +90,13 @@ function App() {
                             path="/facilities/register"
                             element={<FacilityForm value={true} />}
                         />
+                        <Route
+                            path="/facilities/:facilityID"
+                            element={<FacilityForm value={false} />}
+                        />
+
+                        <Route path="/area/register" element={<AreaForm />} />
+                        <Route path="/area" element={<AreaList />} />
 
                         <Route
                             path="/inspections"
