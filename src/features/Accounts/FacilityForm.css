@@ -1,0 +1,44 @@
+.facilityForm {
+    margin-top: 2em;
+    margin-left: 400px;
+    width: 50%;
+    border: 3px solid #04AA6D;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.facilityForm h1 {
+    font-size: 120%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.facilityForm ul li {
+    padding-top: 0.3em;
+    margin-left: 15px;
+}
+
+.facilityForm button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 8px 14px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.facilityForm input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.facilityForm .msg {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    color: red;
+}
