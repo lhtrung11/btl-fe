@@ -49,17 +49,6 @@
   
 }
 
-.FacilityList .dropdown-content {
-  margin-right:1570px;
-  margin-top:-527px;
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
 
 .FacilityList .dropdown-content1 {
   /* margin-right:1025px;

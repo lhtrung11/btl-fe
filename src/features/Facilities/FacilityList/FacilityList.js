@@ -10,7 +10,7 @@ export default function FacilityList() {
     };
 
     const myFunction2 = () => {
-        document.getElementById('myDropdown2').classList.add('show');
+        document.getElementById('myDropdown2').classList.toggle('show');
     };
 
     const myFunction3 = () => {
@@ -95,16 +95,7 @@ export default function FacilityList() {
                 <tr>
                     <th>STT</th>
                     <th>Tên cơ sở</th>
-                    <th>
-                        <button onClick={() => myFunction()} class="dropbtn">
-                            Khu vực
-                        </button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="#Home">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                    </th>
+                    <th>Khu vực</th>
                     <th>Số điện thoại</th>
                     <th>
                         <button onClick={() => myFunction2()} class="dropbtn">
