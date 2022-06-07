@@ -48,9 +48,6 @@ const AreaForm = () => {
           required
         />
         
-        for (var i=0; i<managerNumber; i++){
-
-        }
         
         <label htmlFor="managers">Tên chuyên viên:</label>
         <input 

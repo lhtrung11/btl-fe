@@ -30,7 +30,7 @@ window.onclick = function (event) {
 
 export default function FacilityList() {
     return (
-        <table>
+        <table className='FacilityList'>
             <tr>
                 <th>STT</th>
                 <th>Tên cơ sở</th>
