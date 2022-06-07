@@ -9,21 +9,16 @@ const FACILITY_URL = '/facilities/';
 const FacilityForm = ({ value }) => {
     //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
     const { state, dispatch } = useContext(AppContext);
-<<<<<<< HEAD
     const [mode, setMode] = useState(value); 
 
     const [ permission, setPermission ] = useState(true);
     const [ success, setSuccess ] = useState(true);
 
-=======
-    const [mode, setMode] = useState(value);
->>>>>>> bc0860000fe045a19f09dbb97b061e4a3680ab92
     const [msg, setMsg] = useState('');
     const [facility, setFacility] = useState({});
     const [license, setLicense] = useState({});
     const { facilityId } = useParams();
     const token = localStorage.getItem('token');
-<<<<<<< HEAD
 
     const getFacility = useCallback(() => {
         if (mode === false) {
@@ -38,31 +33,12 @@ const FacilityForm = ({ value }) => {
                 }
                 else {
                     setFacility({...facility, 
-=======
-
-    if (state.role === 'user') {
-        setFacility({ ...facility, area: state.area });
-    }
-
-    const getFacility = useCallback(() => {
-        if (mode === false) {
-            axios
-                .get(`/facilities/${facilityId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-                .then((response) => {
-                    setFacility({
-                        ...facility,
->>>>>>> bc0860000fe045a19f09dbb97b061e4a3680ab92
                         name: response.data.data.facility.name,
                         area: response.data.data.facility.area,
                         address: response.data.data.facility.address,
                         business: response.data.data.facility.business,
                         contact: response.data.data.facility.contact,
                     });
-<<<<<<< HEAD
                     setLicense({...license, business: response.data.data.facility.business,});
                 }
             })
@@ -70,16 +46,6 @@ const FacilityForm = ({ value }) => {
                 setMsg("Không tìm thấy cơ sở phù hợp, vui lòng quay lại");
                 setSuccess(false);
             })
-=======
-                    setLicense({
-                        ...license,
-                        business: response.data.data.facility.business,
-                    });
-                })
-                .catch((error) => {
-                    setMsg('Không tìm thấy cơ sở phù hợp, vui lòng quay lại');
-                });
->>>>>>> bc0860000fe045a19f09dbb97b061e4a3680ab92
         }
     }, []);
 
