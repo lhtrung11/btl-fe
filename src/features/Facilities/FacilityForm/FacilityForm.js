@@ -22,7 +22,6 @@ const FacilityForm = ({value}) => {
                 },
             })
             .then((response) => {
-                console.log(response);
                 setFacility({...facility, 
                     name: response.data.data.facility.name,
                     area: response.data.data.facility.area,
@@ -61,8 +60,20 @@ const FacilityForm = ({value}) => {
     const updateFacility = async (e) => {
         e.preventDefault();
         try {
+            console.log()
+            const token = localStorage.getItem('token');
+            const option = {
+                method: 'put',
+                url: `/facilities/${facilityId}`,
+                data: { facility, license: license},
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            const response = await axios(option);   
+            setMsg('Chỉnh sửa thông tin cơ sở thành công!');
         } catch (err) {
-            setMsg('Chỉnh sửa không thành công');
+            setMsg('Chỉnh sửa thông tin cơ sở không thành công');
         }
     };
 
@@ -107,8 +118,11 @@ const FacilityForm = ({value}) => {
                     name="area"
                     value={facility?.area}
                     onChange={(e) => {
-                        setFacility({ ...facility, area: e.target.value });
+                        if (mode){
+                            setFacility({ ...facility, area: e.target.value });
+                        }
                     }}
+                    disabled = {!mode}
                 >
                     <option value={'null'}>Chưa được đăng ký khu vực</option>
                     <option value={'629c67cc77b1cff0da27ee72'}>
@@ -190,24 +204,32 @@ const FacilityForm = ({value}) => {
                 />
 
                 <label htmlFor="business">Loại hình kinh doanh:</label>
-                <input
+                <select
                     placeholder="Nhập loại hình kinh doanh"
                     type="text"
                     name="business"
-                    value={facility?.business || ''}
+                    value={license?.business || ''}
                     onChange={(e) => {
                         setMsg('');
-                        setFacility({ ...facility, business: e.target.value });
-                        setLicense({ ...license, business: e.target.value });
+                        setFacility({
+                            ...facility,
+                            business: e.target.value,
+                        });
+                        setLicense({
+                            ...license,
+                            business: e.target.value,
+                        });
                     }}
-                    required
-                />
+                >
+                    <option value={'Dịch vụ ăn uống'}>Dịch vụ ăn uống</option>
+                    <option value={'Sản xuất thực phẩm'}>Sản xuất thực phẩm</option>
+                </select>
 
                 <label>Giấy phép hoạt động: </label>
                 <ul>
                     <li>
                         <label htmlFor="business">Loại hình kinh doanh</label>
-                        <input
+                        <select
                             placeholder="Nhập loại hình kinh doanh"
                             type="text"
                             name="business"
@@ -222,9 +244,11 @@ const FacilityForm = ({value}) => {
                                     ...license,
                                     business: e.target.value,
                                 });
-                                setFacility({...facility, license: license});
                             }}
-                        />
+                        >
+                            <option value={'Dịch vụ ăn uống'}>Dịch vụ ăn uống</option>
+                            <option value={'Sản xuất thực phẩm'}>Sản xuất thực phẩm</option>
+                        </select>
                     </li>
                     <li>
                         <label htmlFor="issueDate">Ngày cấp:</label>
@@ -241,13 +265,11 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
-                                    setFacility({...facility, license: license});
                                 } else if (e.target.value <= license.expireDate) {
                                     setLicense({
                                         ...license,
                                         issueDate: e.target.value,
                                     });
-                                    setFacility({...facility, license: license});
                                 } else {
                                     setMsg(
                                         'Ngày cấp phát không được sau ngày hết hạn'
@@ -272,13 +294,11 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
-                                    setFacility({...facility, license: license});
                                 } else if (e.target.value >= license.issueDate) {
                                     setLicense({
                                         ...license,
                                         expireDate: e.target.value,
                                     });
-                                    setFacility({...facility, license: license});
                                 } else {
                                     setMsg(
                                         'Ngày hết hạn không được trước ngày cấp phát'
@@ -297,7 +317,6 @@ const FacilityForm = ({value}) => {
                                     ...license,
                                     isActive: e.target.value,
                                 });
-                                setFacility({...facility, license: license});
                             }}
                             required
                         >
