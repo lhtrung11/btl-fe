@@ -1,4 +1,4 @@
-/* table {
+table {
   margin-top: 2em;
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -61,4 +61,4 @@ content {
 
 .dropdown a:hover {background-color: white;}
 
-.show {display: block;} */
+.show {display: block;}
