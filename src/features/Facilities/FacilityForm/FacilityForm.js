@@ -11,11 +11,7 @@ const FacilityForm = ({ value }) => {
     const { state, dispatch } = useContext(AppContext);
     const [mode, setMode] = useState(value);
 
-<<<<<<< Updated upstream
-    const [permission, setPermission] = useState(true);
-=======
     const [ permission, setPermission ] = useState(true);
->>>>>>> Stashed changes
     const [success, setSuccess] = useState(true);
 
     const [msg, setMsg] = useState('');

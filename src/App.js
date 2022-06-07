@@ -89,12 +89,8 @@ function App() {
                             path="/facilities/:facilityID"
                             element={<FacilityForm value={false} />}
                         />
-<<<<<<< Updated upstream
                         <Route path="/area/:areaID" element={<AreaForm />} />
-                        <Route path="/area" element={<AreaList />} />
-=======
 
->>>>>>> Stashed changes
                         <Route
                             path="/inspections"
                             element={<InspectionList />}
@@ -108,8 +104,6 @@ function App() {
                             element={<InspectionForm />}
                         /> */}
 
-                        <Route path="/area" element={<AreaList />} />
-                        <Route path="/area/register" element={<AreaForm />} />
                         {/* <Route element={<LoggedRoute account={state.account} /> }>
                             {/* ADMIN ONLY ROUTE */}
                             <Route element={<AdminRoute 
