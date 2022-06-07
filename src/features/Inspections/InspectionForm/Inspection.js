@@ -17,11 +17,13 @@ export default function Inspection() {
                 },
             };
             const response = await axios(option);
-            const form = response.data.data.inspection;
-            console.log(form);
-            setForm(form);
+            // console.log(response);
+            setForm({
+                _id: response.data.data.inspection._id,
+                name: response.data.data.inspection.name,
+            });
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }, []);
 
@@ -43,10 +45,8 @@ export default function Inspection() {
                     id="name"
                     name="name"
                     disabled
-                    value={form.facility._id || ''}
-                >
-                    {form.facility.name || ''}
-                </input>
+                    value={form.name}
+                />
                 <br />
                 <label htmlFor="begin">Ngày bắt đầu:</label>
                 <input
@@ -54,15 +54,15 @@ export default function Inspection() {
                     id="begin"
                     name="begin"
                     max="2022-12-31"
-                    // value={form.from}
-                ></input>
+                    value={form.from}
+                />
                 <label htmlFor="end">Ngày kết thúc:</label>
                 <input
                     type="date"
                     id="end"
                     name="end"
                     max="2022-12-31"
-                    // value={form.to}
+                    value={form.to}
                 ></input>
                 <br />
                 <label htmlFor="conclusion">Kết luận của thanh tra</label>
