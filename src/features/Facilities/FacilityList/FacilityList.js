@@ -21,9 +21,23 @@ export default function FacilityList() {
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName('dropdown-content');
+            var dropdowns1 = document.getElementsByClassName('dropdown-content1');
+            var dropdowns2 = document.getElementsByClassName('dropdown-content2');
             var i;
             for (i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+            for (i = 0; i < dropdowns1.length; i++) {
+                var openDropdown = dropdowns1[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+            for (i = 0; i < dropdowns2.length; i++) {
+                var openDropdown = dropdowns2[i];
                 if (openDropdown.classList.contains('show')) {
                     openDropdown.classList.remove('show');
                 }
@@ -76,56 +90,46 @@ export default function FacilityList() {
 
     return (
         <>
-            <h1 className="facilityListName">Danh sách cơ sở</h1>
+            <h1 className='listName'> Danh sách cơ sở</h1>
             <table className="FacilityList">
                 <tr>
                     <th>STT</th>
                     <th>Tên cơ sở</th>
                     <th>
-                        <button
-                            onClick={() => myFunction()}
-                            className="dropbtn"
-                        >
+                        <button onClick={() => myFunction()} class="dropbtn">
                             Khu vực
                         </button>
-                        <div id="myDropdown" className="dropdown-content">
+                        <div id="myDropdown" class="dropdown-content">
                             <a href="#Home">Home</a>
                             <a href="#about">About</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </th>
                     <th>Số điện thoại</th>
-                    <th>Địa chỉ</th>
                     <th>
-                        <button
-                            onClick={() => myFunction2()}
-                            className="dropbtn"
-                        >
+                        <button onClick={() => myFunction2()} class="dropbtn">
                             Loại hình kinh doanh
                         </button>
-                        <div id="myDropdown2" className="dropdown-content">
+                        <div id="myDropdown2" class="dropdown-content1">
                             <a href="#Home">Home</a>
                             <a href="#about">About</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </th>
+                    <th>Loại hình kinh doanh</th>
                     <th>
-                        <button
-                            onClick={() => myFunction3()}
-                            className="dropbtn"
-                        >
+                        <button onClick={() => myFunction3()} class="dropbtn">
                             Giấy phép
                         </button>
-                        <div id="myDropdown3" className="dropdown-content">
+                        <div id="myDropdown3" class="dropdown-content2">
                             <a href="#Home">Home</a>
                             <a href="#about">About</a>
                             <a href="#contact">Contact</a>
                         </div>
                     </th>
                     <th>Xóa</th>
-                    <th>Chỉnh sửa</th>
+                    <th>Chi tiết</th>
                 </tr>
-
                 {facilities.map((fac, index) => {
                     return (
                         <tr>
@@ -155,8 +159,8 @@ export default function FacilityList() {
                                 </button>
                             </td>
                         </tr>
-                    );
-                })}
+                    );})
+                }
             </table>
         </>
     );
