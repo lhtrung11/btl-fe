@@ -50,8 +50,8 @@
 }
 
 .FacilityList .dropdown-content {
-  margin-right:1525px;
-  margin-top:-555px;
+  margin-right:1570px;
+  margin-top:-527px;
   display: none;
   position: absolute;
   background-color: white;
@@ -110,11 +110,11 @@
 
 .FacilityList .show {display: block;}
 
-.listName {
+/* .listName {
   padding-top: 1rem;
   font-size: 200%;
   color: #04AA6D;
   margin: auto;
   text-transform: uppercase;
   text-align: center;
-}
+} */

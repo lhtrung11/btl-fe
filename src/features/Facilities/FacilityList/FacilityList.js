@@ -159,8 +159,8 @@ export default function FacilityList() {
                                 </button>
                             </td>
                         </tr>
-                    );
-                    })}
+                    );})
+                }
             </table>
         </>
     );
