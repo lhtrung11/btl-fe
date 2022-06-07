@@ -46,6 +46,7 @@
 .FacilityList .dropdown {
   position: relative;
   display: inline-block;
+  
 }
 
 .FacilityList .dropdown-content {
