@@ -1,5 +1,14 @@
+.facilityListName {
+  padding-top: 1rem;
+  font-size: 200%;
+  color: #04AA6D;
+  margin: auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .FacilityList {
-  margin-top: 2em;
+  margin-top: 1em;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;

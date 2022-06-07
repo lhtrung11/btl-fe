@@ -21,7 +21,6 @@ const FacilityForm = ({value}) => {
     const createFacility = async (e) => {
         e.preventDefault();
         try {
-            setFacility({ ...facility });
             const token = localStorage.getItem('token');
             const option = {
                 method: 'post',
@@ -240,6 +239,7 @@ const FacilityForm = ({value}) => {
                                     ...license,
                                     business: e.target.value,
                                 });
+                                setFacility({...facility, license: license});
                             }}
                         />
                     </li>
@@ -258,11 +258,13 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
+                                    setFacility({...facility, license: license});
                                 } else if (e.target.value <= license.expireDate) {
                                     setLicense({
                                         ...license,
                                         issueDate: e.target.value,
                                     });
+                                    setFacility({...facility, license: license});
                                 } else {
                                     setMsg(
                                         'Ngày cấp phát không được sau ngày hết hạn'
@@ -287,11 +289,13 @@ const FacilityForm = ({value}) => {
                                         issueDate: e.target.value,
                                         expireDate: e.target.value,
                                     });
+                                    setFacility({...facility, license: license});
                                 } else if (e.target.value >= license.issueDate) {
                                     setLicense({
                                         ...license,
                                         expireDate: e.target.value,
                                     });
+                                    setFacility({...facility, license: license});
                                 } else {
                                     setMsg(
                                         'Ngày hết hạn không được trước ngày cấp phát'
@@ -310,6 +314,7 @@ const FacilityForm = ({value}) => {
                                     ...license,
                                     isActive: e.target.value,
                                 });
+                                setFacility({...facility, license: license});
                             }}
                             required
                         >
@@ -318,7 +323,7 @@ const FacilityForm = ({value}) => {
                         </select>
                     </li>
                 </ul>
-
+                
                 <p className={msg ? 'msg' : 'offscreen'}>{msg}</p>
 
                 {mode ? (
