@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from '../../../api/axios';
 import "./AreaForm.css"
 
-const AREA_URL ='admin/areas/';
+const AREA_URL ='/admin/areas';
 
 const AreaForm = ({value}) => {
   //KIỂM TRA NẾU LÀ CHUYÊN VIÊN -> CHỈ ĐƯỢC ĐĂNG KÝ/CẬP NHẬT CƠ SỞ TRONG KHU VỰC CỦA MÌNH
