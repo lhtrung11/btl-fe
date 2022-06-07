@@ -49,3 +49,8 @@
     color: #04AA6D;
     background-color: white;
 }
+
+label.labelDate,
+input.inputDate {
+    margin: 1rem;
+}

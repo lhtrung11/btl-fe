@@ -12,7 +12,7 @@ import FacilityForm from './features/Facilities/FacilityForm/FacilityForm';
 import FacilityList from './features/Facilities/FacilityList/FacilityList';
 import AreaList from './features/Area/AreaList/AreaList';
 import AreaForm from './features/Area/AreaForm/AreaForm';
-import InspectionForm from './features/Inspections/InspectionForm/InspectionForm';
+import NewInspection from './features/Inspections/NewInspection/NewInspection';
 import InspectionList from './features/Inspections/InspectionList/InspectionList';
 import Login from './features/Auth/login/Login';
 import AppReducer from './reducers/AppReducer';
@@ -73,14 +73,7 @@ function App() {
                                 </div>
                             }
                         />
-
                         <Route path="/" element={<Home />}></Route>
-
-                        {/* <Route element={<LoggedRoute 
-                            account={state.account} 
-                            role={state.role}
-                            area={state.area}
-                        />}> */}
                         <Route path="/facilities" element={<FacilityList />} />
                         <Route
                             path="/facilities/:facilityId"
@@ -94,31 +87,25 @@ function App() {
                             path="/facilities/:facilityID"
                             element={<FacilityForm value={false} />}
                         />
-
                         <Route path="/area/register" element={<AreaForm />} />
                         <Route path="/area" element={<AreaList />} />
-
                         <Route
                             path="/inspections"
                             element={<InspectionList />}
                         />
                         <Route
-                            path="/inspections/register"
-                            element={<InspectionForm />}
+                            path="/inspections/register/:facilityId"
+                            element={<NewInspection />}
                         />
-                        <Route
+                        {/* <Route
                             path="/inspections/:inspectionID"
                             element={<InspectionForm />}
-                        />
-
+                        /> */}
                         <Route path="/users" element={<AccountList />} />
                         <Route path="/users/register" element={<Register />} />
                         <Route path="/users/:userId" element={<Account />} />
-
                         <Route path="/area/:areaID" element={<AreaForm />} />
                         <Route path="/area" element={<AreaList />} />
-                        {/* </Route> */}
-
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
